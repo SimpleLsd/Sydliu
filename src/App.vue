@@ -16,23 +16,23 @@
   <HomeHeader />
   <main class="main">
     <NavMain />
-    <section class="content">
-      <RouterView />
-    </section>
+    <RouterView />
   </main>
   <!-- <TheWelcome /> -->
 </template>
 
 <script setup lang="ts">
-// import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 import HomeHeader from './components/HomeHeader.vue'
 import NavMain from './components/NavMain.vue'
 </script>
 
 <style scoped>
 .main {
-  display: flex;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto 1fr;
+  /* grid-auto-columns: 1fr; */
   width: 100%;
   flex-flow: row;
   justify-content: space-between;

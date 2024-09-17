@@ -1,33 +1,37 @@
 <template>
   <div class="nav_main">
-    <div class="title_group">
-      <div class="title">SYDLIU.ME</div>
+    <div class="content">
+      <div class="title_group">
+        <div class="title">SYDLIU.ME</div>
+      </div>
+      <div class="divider"></div>
+      <div class="primary_text">JUL 03 / 最后更新 JUL 03</div>
+      <div class="primary_text">欢迎光临，这里有我的有趣研究和产出，祝你游览开心</div>
+      <div class="divider"></div>
+      <div class="secondary_text">标签集合</div>
+      <div class="tag_group">
+        <div class="tag">玩点啥 -></div>
+        <div class="tag">3d打印 -></div>
+        <div class="tag">技能 -></div>
+        <div class="tag">设计周刊 -></div>
+        <div class="tag">开发笔记 -></div>
+      </div>
+      <div class="divider"></div>
+      <div class="secondary_text">如果你对我感兴趣：</div>
+      <div class="contact">ABOUT ME</div>
     </div>
-    <div class="divider"></div>
-    <div class="primary_text">JUL 03 / 最后更新 JUL 03</div>
-    <div class="primary_text">欢迎光临，这里有我的有趣研究和产出，祝你游览开心</div>
-    <div class="divider"></div>
-    <div class="secondary_text">标签集合</div>
-    <div class="tag_group">
-      <div class="tag">玩点啥 -></div>
-      <div class="tag">3d打印 -></div>
-      <div class="tag">技能 -></div>
-      <div class="tag">设计周刊 -></div>
-      <div class="tag">开发笔记 -></div>
-    </div>
-    <div class="divider"></div>
-    <div class="secondary_text">如果你对我感兴趣：</div>
-    <div class="contact">ABOUT ME</div>
   </div>
 </template>
 
 <script lang="ts" setup></script>
 
 <style scoped>
-.nav_main {
+.content {
+  position: sticky;
+  top: 24px;
+  z-index: 1;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
   width: 312px;
   padding: 24px;
   gap: 24px;
