@@ -8,20 +8,30 @@
       <div class="section">
         <div class="section_title">置顶</div>
         <div class="items">
-          <HomeArticle title="自制 Figma 插件 “Auto Number” 获得超过2000下载量" />
-          <HomeArticle title="设计周刊 - 第12期" />
-          <HomeArticle title="知识体系 - 自用服务器搭建：从硬件搭建到软件部署" />
-          <HomeArticle title="入坑3D打印一年有感" />
+          <HomeArticle
+            v-for="(article, index) in topArticles"
+            :key="'top-' + index"
+            :title="article.title"
+            :coverUrl="article.coverUrl"
+            :articleDate="article.articleDate"
+            :tags="article.articleTags"
+            :articleNum="article.articleNum"
+          />
         </div>
       </div>
       <div class="divider"></div>
       <div class="section">
         <div class="section_title">文章</div>
         <div class="items">
-          <HomeArticle title="自制 Figma 插件 “Auto Number” 获得超过2000下载量" />
-          <HomeArticle title="设计周刊 - 第12期" />
-          <HomeArticle title="知识体系 - 自用服务器搭建：从硬件搭建到软件部署" />
-          <HomeArticle title="入坑3D打印一年有感" />
+          <HomeArticle
+            v-for="(article, index) in homeArticles"
+            :key="'top-' + index"
+            :title="article.title"
+            :coverUrl="article.coverUrl"
+            :articleDate="article.articleDate"
+            :tags="article.articleTags"
+            :articleNum="article.articleNum"
+          />
         </div>
       </div>
       <div class="divider"></div>
@@ -32,11 +42,50 @@
 </template>
 
 <script setup lang="ts">
-// import TheWelcome from '../components/TheWelcome.vue'
+import { onMounted, ref } from 'vue'
+import type { Article } from '@/interfaces/article'
+
 import UpdateInfo from '../components/home/UpdateInfo.vue'
 import HomeArticle from '../components/home/HomeArticle.vue'
 import YouMayAsk from '../components/home/YouMayAsk.vue'
-import GeneralFooter from '../components/GeneralFooter.vue'
+import GeneralFooter from '../components/common/GeneralFooter.vue'
+
+const topArticles = ref<Article[]>([])
+const homeArticles = ref<Article[]>([])
+
+const isLoading = ref(true)
+const errorMessage = ref('')
+
+const API_AllArticles = 'https://server.sydliu.me:8088/api/articles'
+const API_TopArticles = 'https://server.sydliu.me:8088/api/articles_top'
+
+onMounted(async () => {
+  try {
+    const [data_allArticles, data_topArticles] = await Promise.all([
+      fetch(API_AllArticles),
+      fetch(API_TopArticles)
+    ])
+
+    if (!data_allArticles.ok || !data_topArticles.ok) {
+      throw new Error(
+        `Failed to fetch articles. All: ${data_allArticles.statusText}, Top: ${data_topArticles.statusText}`
+      )
+    }
+
+    const [json_allArticles, json_topArticles] = await Promise.all([
+      data_allArticles.json(),
+      data_topArticles.json()
+    ])
+
+    topArticles.value = Array.isArray(json_topArticles) ? json_topArticles.slice(0, 2) : []
+    homeArticles.value = Array.isArray(json_allArticles) ? json_allArticles.slice(0, 4) : []
+  } catch (error) {
+    errorMessage.value = 'Failed to load articles. Please try again later.'
+    console.error('Error fetching articles:', error)
+  } finally {
+    isLoading.value = false
+  }
+})
 </script>
 
 <style scoped>

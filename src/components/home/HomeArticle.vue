@@ -1,13 +1,12 @@
 <template>
   <div class="article">
-    <div class="cover">
-      <img src="@/assets/test_img_1.png" alt="" />
+    <div class="cover" @click="navigateToArticle">
+      <img :src="coverUrl" alt="" />
     </div>
     <div class="date_tags">
-      <div class="date">MAY - 13 - 2024</div>
+      <div class="date">{{ formattedDate }}</div>
       <div class="tags">
-        <div class="tag">open</div>
-        <div class="tag">open</div>
+        <div class="tag" v-for="(tag, index) in tagNames.slice(0, 3)" :key="index">{{ tag }}</div>
       </div>
     </div>
     <div class="title">
@@ -17,9 +16,51 @@
 </template>
 
 <script lang="ts" setup>
-defineProps<{
+import { ref, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const props = defineProps<{
   title: string
+  coverUrl: string
+  articleDate: string
+  tags: string[]
+  articleNum: number
 }>()
+
+const tagNames = ref<string[]>([])
+
+const formattedDate = computed(() => {
+  const { articleDate } = props
+  const date = new Date(articleDate)
+
+  const month = date.toLocaleString('en-US', { month: 'short' }).toUpperCase()
+  const day = date.getDate().toString().padStart(2, '0')
+  const year = date.getFullYear()
+
+  return `${month} - ${day} - ${year}`
+})
+
+const fetchTagName = async (tagId: string) => {
+  try {
+    const response = await fetch(`https://server.sydliu.me:8088/api/get_tag_name/${tagId}`)
+    const data = await response.text()
+    return data
+  } catch (error) {
+    console.error(error)
+    return tagId
+  }
+}
+const getTagNames = async () => {
+  tagNames.value = await Promise.all(props.tags.map(fetchTagName))
+}
+
+const navigateToArticle = () => {
+  router.push(`/article/${props.articleNum}`)
+}
+
+onMounted(getTagNames)
 </script>
 
 <style scoped>
@@ -59,6 +100,7 @@ defineProps<{
   padding: 4px 8px;
   border: 1px solid #606060;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .date {
@@ -66,7 +108,7 @@ defineProps<{
 }
 
 .title {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 500;
 }
 </style>
