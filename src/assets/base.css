@@ -65,6 +65,15 @@
   font-weight: normal;
 }
 
+* ::selection {
+  color: #d1d1d1; /* 浅灰色文字 */
+  background-color: #2d3748; /* 暗灰蓝色背景 */
+}
+
+.unselectable {
+  user-select: none;
+}
+
 body {
   min-height: 100vh;
   color: var(--color-text);

@@ -10,12 +10,27 @@ export interface Article {
 }
 
 // 定义段落类型
-type Section = ParagraphSection | HeadingSection | CodeSection | BookmarkSection | ImageSection
+export type Section =
+  | ParagraphSection
+  | HeadingSection
+  | CodeSection
+  | BookmarkSection
+  | LinkPreviewSection
+  | ImageSection
+  | BulletedListSection
+  | NumberedListSection
+  | ListSection
 
 // 段落类型定义
 interface ParagraphSection {
   type: 'paragraph' // 段落
   typeData: TypeData
+}
+
+export interface ListSection {
+  type: 'list' // 列表类型
+  listType: 'bulleted_list_item' | 'numbered_list_item' // 无序列表或有序列表
+  items: (BulletedListSection | NumberedListSection)[] // 列表项
 }
 
 interface HeadingSection {
@@ -25,7 +40,7 @@ interface HeadingSection {
   }
 }
 
-interface CodeSection {
+export interface CodeSection {
   type: 'code' // 代码段
   typeData: {
     caption: string[] // 代码段标题
@@ -42,6 +57,13 @@ interface BookmarkSection {
   }
 }
 
+interface LinkPreviewSection {
+  type: 'link_preview' // 链接预览类型
+  typeData: {
+    url: string // 链接 URL
+  }
+}
+
 interface ImageSection {
   type: 'image' // 图片类型
   typeData: {
@@ -51,7 +73,20 @@ interface ImageSection {
       url: string // 图片 URL
       expiry_time: string // 图片过期时间
     }
+    external: {
+      url: string // 外部图片 URL
+    }
   }
+}
+
+interface BulletedListSection {
+  type: 'bulleted_list_item' // 无序列表项
+  typeData: TypeData
+}
+
+interface NumberedListSection {
+  type: 'numbered_list_item' // 有序列表项
+  typeData: TypeData
 }
 
 // 定义 TypeData 的结构
@@ -61,11 +96,11 @@ interface TypeData {
 }
 
 // 富文本结构
-interface RichText {
+export interface RichText {
   type: 'text' | 'mention' // 文本或提及类型
   text?: {
     content: string // 内容
-    link: string | null // 链接
+    link: { url: string } | null // 链接
   }
   mention?: Mention // 提及
   annotations: Annotations // 格式修饰

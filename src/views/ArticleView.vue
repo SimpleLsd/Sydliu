@@ -15,10 +15,8 @@
         <div class="cover"><img :src="article?.coverUrl" /></div>
       </div>
       <img src="@/assets/logo.svg" class="top_logo" />
-      <div class="sections">
-        <div v-for="(section, index) in article?.sections" :key="index" class="section">
-          <div class="">{{ section }}</div>
-        </div>
+      <div v-for="(group, index) in groupedSections" :key="index" class="section">
+        <ArticleSection :section="group" />
       </div>
     </div>
   </div>
@@ -27,10 +25,13 @@
 <script lang="ts" setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import type { Article } from '@/interfaces/article'
+import type { Article, Section, ListSection } from '@/interfaces/article'
+import ArticleSection from '@/components/article/ArticleSection.vue'
+
+const route = useRoute()
 
 const article = ref<Article | null>(null)
-const route = useRoute()
+const groupedSections = ref<Section[]>([])
 
 const formattedDate = computed(() => {
   if (!article.value?.articleDate) return ''
@@ -43,17 +44,43 @@ const formattedDate = computed(() => {
   return `${month} - ${day} - ${year}`
 })
 
+const groupSections = (sections: Section[]): Section[] => {
+  const groups: Section[] = []
+  let currentList: ListSection | null = null
+
+  sections.forEach((section) => {
+    if (section.type === 'bulleted_list_item' || section.type === 'numbered_list_item') {
+      if (currentList) {
+        currentList.items.push(section)
+      } else {
+        currentList = {
+          type: 'list',
+          listType: section.type,
+          items: [section]
+        }
+        groups.push(currentList)
+      }
+    } else {
+      currentList = null
+      groups.push(section)
+    }
+  })
+  // console.log(groups)
+
+  return groups
+}
+
 const fetchArticle = async () => {
   const articleNum = route.params.articleNum
-  // console.log(articleNum)
   try {
     const response = await fetch(`https://server.sydliu.me:8088/api/articles/${articleNum}`)
     if (!response.ok) {
       throw new Error(`API error: ${response.status}`)
     } else {
-      article.value = await response.json()
+      const fetchedArticle = await response.json()
+      article.value = fetchedArticle
+      groupedSections.value = groupSections(fetchedArticle.sections)
     }
-    // console.log(article.value)
   } catch (error) {
     console.error(error)
   }
@@ -75,7 +102,7 @@ onMounted(fetchArticle)
   display: flex;
   flex-flow: column;
   align-items: center;
-  gap: 40px;
+  gap: 32px;
   padding: 0 32px 0 0;
 }
 .head {
@@ -117,5 +144,8 @@ onMounted(fetchArticle)
 }
 .top_logo {
   width: 40px;
+}
+.section {
+  width: 100%;
 }
 </style>
