@@ -85,4 +85,11 @@ span.code {
 span.text-default {
   color: inherit;
 }
+img.mention-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  position: relative;
+  top: 6px;
+}
 </style>

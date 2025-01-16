@@ -8,7 +8,7 @@
       <div class="primary_text">JUL 03 / 最后更新 JUL 03</div>
       <div class="primary_text">欢迎光临，这里有我的有趣研究和产出，祝你游览开心</div>
       <div class="divider"></div>
-      <div class="secondary_text">标签集合</div>
+      <div class="secondary_text">标签集合（暂不可用）</div>
       <div class="tag_group">
         <div class="tag">玩点啥 -></div>
         <div class="tag">3d打印 -></div>
@@ -17,7 +17,7 @@
         <div class="tag">开发笔记 -></div>
       </div>
       <div class="divider"></div>
-      <div class="secondary_text">如果你对我感兴趣：</div>
+      <div class="secondary_text">如果你对我感兴趣（暂不可用）</div>
       <div class="contact">ABOUT ME</div>
     </div>
   </div>
@@ -64,6 +64,8 @@
   font-size: 12px;
   padding: 4px 8px;
   border: 1px solid #606060;
+  opacity: 0.5;
+  cursor: no-drop;
 }
 .contact {
   width: 100%;
@@ -74,5 +76,7 @@
   line-height: 48px;
   text-align: center;
   border-radius: 8px;
+  opacity: 0.5;
+  cursor: no-drop;
 }
 </style>

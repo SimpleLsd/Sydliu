@@ -4,7 +4,7 @@
     <div class="b">
       <div class="l">给网站增加了交互底纹，鼠标在空白处移动时可以触发底纹变化</div>
       <div class="r">
-        View Details
+        View Details（暂不可用）
         <div class="view_details">
           查看详情
           <img src="@/assets/view_details.svg" alt="" />
@@ -52,5 +52,6 @@
   font-size: 24px;
   color: var(--color-main);
   cursor: pointer;
+  cursor: no-drop;
 }
 </style>

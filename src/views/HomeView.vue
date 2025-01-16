@@ -92,7 +92,7 @@ onMounted(async () => {
 .main_scroll {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: minmax(15vw, 200px) 1fr;
+  grid-template-columns: minmax(10vw, 150px) 1fr;
   grid-auto-columns: 1fr;
   width: 100%;
 }

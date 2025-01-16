@@ -18,6 +18,7 @@
       <div v-for="(group, index) in groupedSections" :key="index" class="section">
         <ArticleSection :section="group" />
       </div>
+      <GeneralFooter />
     </div>
   </div>
 </template>
@@ -27,6 +28,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Article, Section, ListSection } from '@/interfaces/article'
 import ArticleSection from '@/components/article/ArticleSection.vue'
+import GeneralFooter from '@/components/common/GeneralFooter.vue'
 
 const route = useRoute()
 
@@ -91,14 +93,20 @@ onMounted(fetchArticle)
 
 <style scoped>
 .main_scroll {
+  width: 100%;
   color: var(--color-main);
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: minmax(15vw, 200px) 1fr;
+  grid-template-columns: minmax(10vw, 150px) 1fr;
   grid-auto-columns: 1fr;
+}
+.left_nav {
   width: 100%;
+  height: 100vh;
 }
 .content {
+  /* width: 100%; */
+  min-width: 0;
   display: flex;
   flex-flow: column;
   align-items: center;
@@ -106,6 +114,7 @@ onMounted(fetchArticle)
   padding: 0 32px 0 0;
 }
 .head {
+  width: 100%;
   display: flex;
   flex-flow: row;
   gap: 24px;

@@ -4,7 +4,7 @@
       <SectionRichText :richTexts="props.section.typeData.rich_text" />
     </p>
     <template v-else-if="props.section.type === 'image'">
-      <img :src="imageSrc" class="img" alt="" />
+      <div class="img_container"><img :src="imageSrc" class="img" alt="" /></div>
     </template>
     <template v-else-if="props.section.type === 'code'">
       <SectionCode :section="props.section"></SectionCode>
@@ -48,10 +48,6 @@ const imageSrc = computed(() => {
   if (props.section.type === 'image' && 'file' in props.section.typeData) {
     return props.section.typeData.file.url || ''
   }
-  // 如果不是 ImageSection 或没有 file 属性，则检查 external.url
-  // if ('external' in props.section.typeData) {
-  //   return props.section.typeData.external?.url || ''
-  // }
   return ''
 })
 </script>
@@ -64,9 +60,15 @@ p {
   line-height: 28px;
   text-align: justify;
 }
+.img_container {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
 .img {
-  width: 100%;
-  height: auto;
+  max-width: 100%; /* 最大宽度限制为容器宽度 */
+  width: auto; /* 原宽度小于容器宽度时保持原宽度 */
+  height: auto; /* 保持图片比例 */
 }
 a.mention-link img {
   width: 20px;

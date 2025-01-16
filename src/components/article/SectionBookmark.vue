@@ -13,7 +13,9 @@
     <div class="title">{{ bookmarkData?.title }}</div>
     <div>{{ bookmarkData?.description }}</div>
     <div class="link_group">
-      <div v-if="bookmarkData?.favicon"><img :src="bookmarkData?.favicon" alt="" /></div>
+      <div v-if="bookmarkData?.favicon">
+        <img :src="bookmarkData?.favicon" alt="" />
+      </div>
       <div v-else>没有图标</div>
       <div>{{ props.url }}</div>
     </div>
@@ -153,4 +155,8 @@ onMounted(() => {
   width: 16px;
   height: 16px;
 }
+/* img {
+  width: 20px;
+  height: auto;
+} */
 </style>

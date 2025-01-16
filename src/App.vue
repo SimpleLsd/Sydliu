@@ -21,6 +21,12 @@ import NavMain from './components/common/NavMain.vue'
   flex-flow: row;
   justify-content: space-between;
 }
+/* .main {
+  display: flex;
+  width: 100%;
+  flex-flow: row;
+  justify-content: space-between;
+} */
 /* header {
   line-height: 1.5;
   max-height: 100vh;

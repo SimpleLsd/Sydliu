@@ -76,6 +76,7 @@ onMounted(getTagNames)
   height: auto;
   overflow: hidden;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .cover img {
