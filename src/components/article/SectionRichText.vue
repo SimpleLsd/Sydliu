@@ -59,6 +59,7 @@ const generateClasses = (annotations: RichText['annotations']): string => {
 <style scoped>
 span {
   font-size: 16px;
+  font-weight: 300;
 }
 span.default {
   margin-right: 4px;
