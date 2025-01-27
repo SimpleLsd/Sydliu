@@ -2,43 +2,43 @@
   font-family: 'SourceHanSansCN';
   src: url('./fonts/SourceHanSansCN-ExtraLight.otf') format('opentype');
   font-weight: 200;
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   src: url('./fonts/SourceHanSansCN-Light.otf') format('opentype');
   font-weight: 300;
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   src: url('./fonts/SourceHanSansCN-Normal.otf') format('opentype');
   font-weight: 400;
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   src: url('./fonts/SourceHanSansCN-Regular.otf') format('opentype');
   font-weight: 500;
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   src: url('./fonts/SourceHanSansCN-Medium.otf') format('opentype');
   font-weight: 600;
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   src: url('./fonts/SourceHanSansCN-Bold.otf') format('opentype');
   font-weight: 700;
-  font-display: auto;
+  font-display: swap;
 }
 @font-face {
   font-family: 'SourceHanSansCN';
   src: url('./fonts/MiSans-Heavy.ttf') format('opentype');
   font-weight: 800;
-  font-display: auto;
+  font-display: swap;
 }
 
 /* @font-face {

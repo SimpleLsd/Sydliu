@@ -24,12 +24,15 @@ let viewer: Viewer | null = null
 onMounted(async () => {
   await nextTick()
   const grid = document.querySelector('.grid') as HTMLElement
-  new Masonry(grid, {
+  const masonry = new Masonry(grid, {
     itemSelector: '.grid-item',
     columnWidth: '.grid-item',
     percentPosition: true,
     gutter: 0
   })
+
+  masonry.layout()
+
   if (gridRef.value) {
     viewer = new Viewer(gridRef.value, {
       navbar: true, // 缩略图导航栏
