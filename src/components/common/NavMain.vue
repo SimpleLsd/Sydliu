@@ -6,6 +6,13 @@
       </div>
       <div class="divider"></div>
       <div class="primary_text">JUL 03 / 最后更新 JUL 03</div>
+      <div class="theme-toggle">
+        <label class="switch">
+          <input type="checkbox" v-model="isDarkMode" @change="toggleTheme" />
+          <span class="slider round"></span>
+        </label>
+        <span>切换主题</span>
+      </div>
       <div class="primary_text">欢迎光临，这里有我的有趣研究和产出，祝你游览开心</div>
       <div class="divider"></div>
       <div class="secondary_text">标签集合（暂不可用）</div>
@@ -23,7 +30,38 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref, watch } from 'vue'
+
+// 用于控制暗色模式和正常模式
+const isDarkMode = ref(false)
+
+// 切换主题的函数
+const toggleTheme = () => {
+  if (isDarkMode.value) {
+    document.body.classList.add('dark-mode')
+    document.body.classList.remove('light-mode')
+    localStorage.setItem('theme', 'dark')
+  } else {
+    document.body.classList.add('light-mode')
+    document.body.classList.remove('dark-mode')
+    localStorage.setItem('theme', 'light')
+  }
+}
+
+// 监听主题变化并初始化
+watch(isDarkMode, toggleTheme)
+
+// 检查 localStorage 中的主题设置
+const savedTheme = localStorage.getItem('theme')
+if (savedTheme) {
+  isDarkMode.value = savedTheme === 'dark'
+} else {
+  // 如果没有保存的主题设置，检查系统的首选主题
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  isDarkMode.value = prefersDark
+}
+</script>
 
 <style scoped>
 .content {
@@ -78,5 +116,55 @@
   border-radius: 8px;
   opacity: 0.5;
   cursor: no-drop;
+}
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 34px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.slider:before {
+  position: absolute;
+  content: '';
+  height: 12px;
+  width: 12px;
+  border-radius: 50px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(14px);
 }
 </style>

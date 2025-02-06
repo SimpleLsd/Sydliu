@@ -1,5 +1,5 @@
-@import './base.css';
 @import './fonts.css';
+@import './color.css';
 
 #app {
   /* max-width: 1280px; */
@@ -23,15 +23,61 @@ a {
   }
 }
 
-@media (min-width: 1024px) {
-  /* body {
-    display: flex;
-    place-items: center;
-  }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
 
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  } */
+*::selection {
+  color: #d1d1d1; /* 浅灰色文字 */
+  background-color: #2d3748; /* 暗灰蓝色背景 */
+}
+
+.unselectable {
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-background);
+  background-color: var(--color-background);
+
+  transition:
+    color 0.5s,
+    background-color 0.5s;
+  line-height: 1.6;
+  font-family:
+    'SourceHanSansCN',
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    'Segoe UI',
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  /* overflow: auto; */
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+  scroll-behavior: smooth;
 }

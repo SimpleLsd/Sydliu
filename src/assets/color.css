@@ -1,0 +1,31 @@
+:root {
+  --main-text-dark: #c0c4d5;
+
+  --gray--13: #000000;
+  --gray--12: #141618;
+  --gray--11: #1f2123;
+  --gray--10: #26282a;
+  --gray--9: #343638;
+  --gray--8: #595b5d;
+  --gray--7: #8c8e90;
+  --gray--6: #bfc1c3;
+  --gray--5: #d9dadc;
+  --gray--4: #f0f2f4;
+  --gray--3: #f5f7f9;
+  --gray--2: #fafcfe;
+  --gray--1: #ffffff;
+}
+
+:root {
+  --color-main: var(--main-text-dark);
+  --color-background: var(--gray--2);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background: var(--gray--13);
+  }
+}
+body.dark-mode {
+  --color-background: var(--gray--13);
+}

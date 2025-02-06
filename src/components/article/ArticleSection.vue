@@ -32,12 +32,20 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, computed } from 'vue'
+import { defineProps, computed, defineAsyncComponent } from 'vue'
 import type { Section } from '@/interfaces/article'
 
-import SectionBookmark from '@/components/article/SectionBookmark.vue'
-import SectionCode from '@/components/article/SectionCode.vue'
-import SectionRichText from '@/components/article/SectionRichText.vue'
+// import SectionBookmark from '@/components/article/SectionBookmark.vue'
+// import SectionCode from '@/components/article/SectionCode.vue'
+// import SectionRichText from '@/components/article/SectionRichText.vue'
+
+const SectionBookmark = defineAsyncComponent(
+  () => import('@/components/article/SectionBookmark.vue')
+)
+const SectionCode = defineAsyncComponent(() => import('@/components/article/SectionCode.vue'))
+const SectionRichText = defineAsyncComponent(
+  () => import('@/components/article/SectionRichText.vue')
+)
 
 const props = defineProps<{
   section: Section

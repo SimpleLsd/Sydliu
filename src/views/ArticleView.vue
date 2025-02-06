@@ -24,11 +24,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Article, Section, ListSection } from '@/interfaces/article'
-import ArticleSection from '@/components/article/ArticleSection.vue'
 import GeneralFooter from '@/components/common/GeneralFooter.vue'
+// import ArticleSection from '@/components/article/ArticleSection.vue'
+
+const ArticleSection = defineAsyncComponent(() => import('@/components/article/ArticleSection.vue'))
 
 const route = useRoute()
 
