@@ -46,7 +46,8 @@ const toggleActive = () => {
   padding: 16px;
   color: var(--color-main);
   cursor: pointer;
-  background-color: #1c1c1c;
+  background-color: var(--color-gray-box);
+  border-radius: 4px;
 }
 .title_group {
   display: flex;

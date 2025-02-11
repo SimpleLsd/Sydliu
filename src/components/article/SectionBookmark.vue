@@ -5,7 +5,7 @@
     <div v-if="bookmarkData?.description">{{ bookmarkData?.description }}</div>
     <div class="link_group">
       <img v-if="bookmarkData?.favicon" :src="bookmarkData?.favicon" alt="favicon" />
-      <div v-else><IconLink></IconLink></div>
+      <IconLink v-else class="favicon"></IconLink>
       <div>{{ props.url }}</div>
     </div>
   </a>
@@ -133,14 +133,15 @@ onMounted(() => {
   gap: 8px;
   padding: 12px;
   border-radius: 8px;
-  background-color: var(--color-bg-light);
-  color: var(--color-main);
+  /* background-color: var(--color-gray-box); */
+  color: var(--color-text-primary);
   text-decoration: none;
   border-radius: 4px;
-  border: 1px solid #e0e0e030;
+  border: 1px solid var(--color-border);
 }
 .url_block:hover {
-  background-color: var(--color-bg-light-hover);
+  /* background-color: var(--color-bg-light-hover); */
+  background-color: var(--color-gray-box);
 }
 .title {
   font-size: 16px;
@@ -154,6 +155,10 @@ onMounted(() => {
 .link_group img {
   width: 16px;
   height: 16px;
+}
+.favicon {
+  width: 20px;
+  height: 20px;
 }
 /* img {
   width: 20px;

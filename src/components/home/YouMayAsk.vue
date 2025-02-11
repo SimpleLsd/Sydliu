@@ -52,7 +52,7 @@ provide('setActiveComponent', (id: any) => {
 }
 .title {
   font-size: 48px;
-  color: var(--color-main);
+  color: var(--color-text-primary);
 }
 .questions {
   display: grid;

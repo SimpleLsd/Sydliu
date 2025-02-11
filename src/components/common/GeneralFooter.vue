@@ -33,12 +33,12 @@ const scrollToTop = () => {
 .scroll-button {
   font-size: 16px;
   transition: 300ms ease-out;
-  color: var(--color-main);
+  color: var(--color-text-secondary);
   border: none;
   cursor: pointer;
 }
 
 .scroll-button:hover {
-  color: #fff;
+  color: var(--color-text-primary);
 }
 </style>

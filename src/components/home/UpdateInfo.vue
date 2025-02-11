@@ -4,7 +4,7 @@
     <div class="b">
       <div class="l">给网站增加了交互底纹，鼠标在空白处移动时可以触发底纹变化</div>
       <div class="r">
-        View Details（暂不可用）
+        <div class="en">View Details（暂不可用）</div>
         <div class="view_details">
           查看详情
           <img src="@/assets/view_details.svg" alt="" />
@@ -25,7 +25,7 @@
 }
 .website_update_info .t {
   font-size: 18px;
-  color: #808080;
+  color: var(--color-text-secondary);
 }
 .website_update_info .b {
   display: flex;
@@ -36,7 +36,7 @@
 }
 .website_update_info .b .l {
   font-size: 48px;
-  color: var(--color-main);
+  color: var(--color-text-primary);
   line-height: 1.4;
   flex: 1;
 }
@@ -50,8 +50,11 @@
   gap: 8px;
   align-items: center;
   font-size: 24px;
-  color: var(--color-main);
+  color: var(--color-text-primary);
   cursor: pointer;
   cursor: no-drop;
+}
+.en {
+  color: var(--color-text-secondary);
 }
 </style>

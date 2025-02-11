@@ -73,13 +73,14 @@ if (savedTheme) {
   width: 312px;
   padding: 24px;
   gap: 24px;
-  color: var(--color-main);
-  border: 1px solid #262626;
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-nav-border);
+  background-color: var(--color-nav-bg);
 }
 .divider {
   width: 100%;
   height: 1px;
-  background-color: #262626;
+  background-color: var(--color-nav-border);
 }
 .title {
   font-size: 36px;
@@ -90,7 +91,7 @@ if (savedTheme) {
 }
 .secondary_text {
   font-size: 12px;
-  color: #808080;
+  color: var(--color-text-secondary);
 }
 .tag_group {
   width: 100%;
@@ -101,15 +102,15 @@ if (savedTheme) {
 .tag {
   font-size: 12px;
   padding: 4px 8px;
-  border: 1px solid #606060;
+  border: 1px solid var(--color-nav-border);
   opacity: 0.5;
   cursor: no-drop;
 }
 .contact {
   width: 100%;
   height: 48px;
-  background-color: #c0c4d5;
-  color: #000;
+  background-color: var(--color-main);
+  color: var(--color-background);
   font-size: 14px;
   line-height: 48px;
   text-align: center;

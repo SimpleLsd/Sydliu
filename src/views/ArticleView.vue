@@ -96,7 +96,7 @@ onMounted(fetchArticle)
 <style scoped>
 .main_scroll {
   width: 100%;
-  color: var(--color-main);
+  color: var(--color-text-primary);
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: minmax(10vw, 150px) 1fr;

@@ -68,14 +68,17 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  background-color: #282c34;
+  background-color: var(--color-code-bg);
+  color: var(--color-text-secondary);
 }
 .copy {
   color: inherit;
   font-size: 14px;
+  font-weight: 300;
   cursor: pointer;
 }
 code {
   padding-top: 0 !important;
+  background-color: var(--color-code-bg);
 }
 </style>

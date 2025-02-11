@@ -78,7 +78,7 @@ span.underline {
 }
 span.code {
   font-family: 'Courier New', Courier, monospace;
-  background-color: #ffffff25;
+  background-color: var(--color-border);
   padding: 3px 6px 1px 6px;
   border-radius: 4px;
   vertical-align: middle;

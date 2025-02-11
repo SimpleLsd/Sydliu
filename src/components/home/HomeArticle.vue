@@ -65,7 +65,7 @@ onMounted(getTagNames)
 
 <style scoped>
 .article {
-  color: var(--color-main);
+  color: var(--color-text-primary);
   width: 100%;
   display: flex;
   flex-flow: column;
@@ -99,7 +99,7 @@ onMounted(getTagNames)
 .tag {
   font-size: 12px;
   padding: 4px 8px;
-  border: 1px solid #606060;
+  border: 1px solid var(--color-border);
   cursor: pointer;
   border-radius: 4px;
 }
