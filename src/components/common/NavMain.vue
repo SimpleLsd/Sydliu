@@ -64,6 +64,11 @@ if (savedTheme) {
 </script>
 
 <style scoped>
+@media (max-width: 767px) {
+  .nav_main {
+    display: none;
+  }
+}
 .content {
   position: sticky;
   top: 24px;

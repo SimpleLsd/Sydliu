@@ -236,7 +236,7 @@ onMounted(() => {
       }),
       gsap.to('.s3', {
         duration: 0.5,
-        attr: { d: 'M 0 0 L 380 0 L 420 50 L 540 50 L 431 80 L 0 80 Z' }
+        attr: { d: 'M 0 0 L 370 0 L 420 50 L 540 50 L 431 80 L 0 80 Z' }
       }),
       gsap.to('.s4', {
         duration: 0.5,
@@ -261,6 +261,12 @@ onMounted(() => {
   margin-bottom: 80px;
   display: flex;
   align-items: center;
+}
+@media (max-width: 767px) {
+  .main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
 }
 .container {
   width: 100%;
