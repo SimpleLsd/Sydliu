@@ -249,7 +249,9 @@ onMounted(() => {
       gsap.to('.letters path', {
         duration: 0.2,
         opacity: 1,
-        stagger: 0.05
+        stagger: {
+          amount: 0.2
+        }
       }),
       gsap.to('.menu', {
         opacity: 0.4,
@@ -265,7 +267,7 @@ onMounted(() => {
   setTimeout(() => {
     enableScroll()
     window.addEventListener('scroll', handleScroll)
-  }, 4000) // 延迟2秒后启用滚动
+  }, 1000) // 延迟2秒后启用滚动
 
   window.addEventListener('scroll', handleScroll)
 })
