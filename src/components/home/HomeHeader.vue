@@ -257,15 +257,16 @@ onMounted(() => {
 <style scoped>
 .logo_svg {
   width: 100%;
+
+  padding: 24px;
   height: auto;
   margin-bottom: 80px;
   display: flex;
   align-items: center;
 }
 @media (max-width: 767px) {
-  .main {
-    display: grid;
-    grid-template-columns: 1fr;
+  .logo_svg {
+    display: none;
   }
 }
 .container {

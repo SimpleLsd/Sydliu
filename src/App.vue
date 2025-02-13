@@ -1,5 +1,7 @@
 <template>
   <HomeHeader />
+
+  <NavTop />
   <main class="main">
     <NavMain />
     <RouterView />
@@ -10,10 +12,12 @@
 import { RouterView } from 'vue-router'
 import HomeHeader from './components/home/HomeHeader.vue'
 import NavMain from './components/common/NavMain.vue'
+import NavTop from './components/common/NavTop.vue'
 </script>
 
 <style scoped>
 .main {
+  padding: 0 24px;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto 1fr;
@@ -28,33 +32,4 @@ import NavMain from './components/common/NavMain.vue'
     grid-template-columns: 1fr;
   }
 }
-
-/* 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}  
-*/
 </style>

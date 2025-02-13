@@ -12,7 +12,6 @@
       </div>
     </div>
   </div>
-  <div class="section"></div>
 </template>
 
 <script lang="ts" setup></script>
@@ -39,6 +38,7 @@
   color: var(--color-text-primary);
   line-height: 1.4;
   flex: 1;
+  text-align: justify;
 }
 .website_update_info .b .r {
   display: flex;
@@ -56,5 +56,38 @@
 }
 .en {
   color: var(--color-text-secondary);
+}
+@media (max-width: 767px) {
+  .website_update_info {
+    display: flex;
+    flex-flow: column;
+    gap: 16px;
+  }
+  .website_update_info .b {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .website_update_info .b .l {
+    font-size: 24px;
+    color: var(--color-text-primary);
+    line-height: 1.4;
+    flex: 1;
+  }
+  .website_update_info .b .r .view_details {
+    display: flex;
+    flex-flow: row;
+    gap: 8px;
+    align-items: center;
+    font-size: 16px;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    cursor: no-drop;
+  }
+  .en {
+    font-size: 10px;
+  }
+  img {
+    width: 32px;
+  }
 }
 </style>

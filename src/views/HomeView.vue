@@ -96,15 +96,6 @@ onMounted(async () => {
   grid-auto-columns: 1fr;
   width: 100%;
 }
-
-@media (max-width: 767px) {
-  .main_scroll {
-    display: block;
-    grid-template-columns: 1fr;
-    grid-template-columns: minmax(10vw, 0) 1fr;
-    width: 100%;
-  }
-}
 .section {
   display: flex;
   flex-flow: column;
@@ -128,5 +119,19 @@ onMounted(async () => {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
+}
+
+@media (max-width: 767px) {
+  .main_scroll {
+    display: block;
+    grid-template-columns: 1fr;
+    grid-template-columns: minmax(10vw, 0) 1fr;
+    width: 100%;
+  }
+  .content {
+    display: flex;
+    flex-flow: column;
+    gap: 24px;
+  }
 }
 </style>

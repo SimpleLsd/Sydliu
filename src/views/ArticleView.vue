@@ -106,8 +106,18 @@ onMounted(fetchArticle)
   width: 100%;
   height: 100vh;
 }
+@media (max-width: 767px) {
+  .main_scroll {
+    grid-template-columns: 0 1fr;
+  }
+  .left_nav {
+    width: 0;
+  }
+  .content {
+    padding-right: 0px !important;
+  }
+}
 .content {
-  /* width: 100%; */
   min-width: 0;
   display: flex;
   flex-flow: column;
