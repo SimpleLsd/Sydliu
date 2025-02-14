@@ -31,36 +31,13 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { inject } from 'vue'
+import type { Ref } from 'vue'
 
-// 用于控制暗色模式和正常模式
-const isDarkMode = ref(false)
+const toggleTheme = inject('$toggleTheme') as () => void
+const isDarkMode = inject('$isDarkMode') as Ref<boolean>
 
-// 切换主题的函数
-const toggleTheme = () => {
-  if (isDarkMode.value) {
-    document.body.classList.add('dark-mode')
-    document.body.classList.remove('light-mode')
-    localStorage.setItem('theme', 'dark')
-  } else {
-    document.body.classList.add('light-mode')
-    document.body.classList.remove('dark-mode')
-    localStorage.setItem('theme', 'light')
-  }
-}
-
-// 监听主题变化并初始化
-watch(isDarkMode, toggleTheme)
-
-// 检查 localStorage 中的主题设置
-const savedTheme = localStorage.getItem('theme')
-if (savedTheme) {
-  isDarkMode.value = savedTheme === 'dark'
-} else {
-  // 如果没有保存的主题设置，检查系统的首选主题
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  isDarkMode.value = prefersDark
-}
+// 在需要的地方调用 toggleTheme
 </script>
 
 <style scoped>

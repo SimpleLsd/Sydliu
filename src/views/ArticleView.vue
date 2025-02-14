@@ -7,7 +7,7 @@
           <div class="date">{{ formattedDate }}</div>
           <div class="title">{{ article?.title }}</div>
           <div class="tags">
-            <div class="tag" v-for="(tag, index) in article?.articleTags" :key="index">
+            <div class="tag" v-for="(tag, index) in tagNames.slice(0, 3)" :key="index">
               {{ tag }}
             </div>
           </div>
@@ -36,6 +36,8 @@ const route = useRoute()
 
 const article = ref<Article | null>(null)
 const groupedSections = ref<Section[]>([])
+
+const tagNames = ref<string[]>([])
 
 const formattedDate = computed(() => {
   if (!article.value?.articleDate) return ''
@@ -90,7 +92,35 @@ const fetchArticle = async () => {
   }
 }
 
-onMounted(fetchArticle)
+const fetchTagName = async (tagId: string) => {
+  try {
+    const response = await fetch(`https://server.sydliu.me:8088/api/get_tag_name/${tagId}`)
+    const data = await response.text()
+    return data
+  } catch (error) {
+    console.error(error)
+    return tagId
+  }
+}
+
+const getTagNames = async () => {
+  if (!article.value || !Array.isArray(article.value.articleTags)) {
+    console.error('Article tags are not available or invalid')
+    return
+  }
+
+  try {
+    tagNames.value = await Promise.all(article.value.articleTags.map(fetchTagName))
+  } catch (error) {
+    console.error('Error fetching tag names:', error)
+  }
+}
+
+onMounted(async () => {
+  await fetchArticle()
+  await getTagNames()
+  console.log(tagNames.value)
+})
 </script>
 
 <style scoped>
@@ -168,5 +198,24 @@ onMounted(fetchArticle)
 }
 .section {
   width: 100%;
+}
+
+@media (max-width: 767px) {
+  .head {
+    flex-flow: column;
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .cover {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .cover img {
+    width: 75vw;
+  }
+  .title {
+    font-size: 24px;
+  }
 }
 </style>

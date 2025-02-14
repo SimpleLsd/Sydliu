@@ -42,7 +42,7 @@
 }
 @font-face {
   font-family: 'SourceHanSansCN';
-  src: url('https://server.sydliu.me:8088/statics/sydliu_me_statics/fonts/MiSans-Heavy.otf')
+  src: url('https://server.sydliu.me:8088/statics/sydliu_me_statics/fonts/SourceHanSansCN-Heavy.otf')
     format('opentype');
   font-weight: 800;
   font-display: swap;
