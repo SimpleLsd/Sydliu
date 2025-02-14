@@ -132,10 +132,6 @@ const handleScroll = () => {
 onMounted(() => {
   disableScroll() // 禁用滚动
 
-  const W = window.innerWidth
-  const H = window.innerHeight
-  console.log(W, H)
-
   tlm
     .to('.svg', {
       duration: 0,
@@ -291,7 +287,7 @@ onBeforeUnmount(() => {
   justify-content: space-between;
   padding: 0 16px;
   align-items: center;
-  position: relative;
+  /* position: relative; */
   /*  */
   height: 100vh;
 }

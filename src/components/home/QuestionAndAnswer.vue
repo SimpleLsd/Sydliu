@@ -81,4 +81,19 @@ p.active {
   padding-top: 24px;
   opacity: 1;
 }
+@media (max-width: 767px) {
+  .question-answer {
+    padding: 12px;
+  }
+  .question {
+    font-size: 12px;
+  }
+  .arrow_icon {
+    width: 8px;
+    height: 8px;
+  }
+  p {
+    font-size: 10px;
+  }
+}
 </style>

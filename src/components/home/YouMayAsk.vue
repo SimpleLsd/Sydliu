@@ -61,4 +61,15 @@ provide('setActiveComponent', (id: any) => {
   align-items: start;
   gap: 16px;
 }
+@media (max-width: 767px) {
+  .you_may_ask {
+    gap: 20px;
+  }
+  .title {
+    font-size: 28px;
+  }
+  .questions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 </style>

@@ -78,24 +78,20 @@ onMounted(getTagNames)
   border-radius: 8px;
   cursor: pointer;
 }
-
 .cover img {
   width: 100%;
   display: block;
   position: relative;
 }
-
 .date_tags {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .tags {
   display: flex;
   gap: 12px;
 }
-
 .tag {
   font-size: 12px;
   padding: 4px 8px;
@@ -103,13 +99,41 @@ onMounted(getTagNames)
   cursor: pointer;
   border-radius: 4px;
 }
-
 .date {
   font-size: 12px;
 }
-
 .title {
   font-size: 24px;
   font-weight: 500;
+}
+@media (max-width: 767px) {
+  .article {
+    gap: 8px;
+  }
+  .date {
+    font-size: 12px !important;
+    opacity: 0.8;
+  }
+  .tags {
+    display: flex;
+    gap: 4px;
+  }
+  .tag:nth-child(n + 2) {
+    display: none;
+  }
+  .tag {
+    font-size: 12px;
+    padding: 3px 6px;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  .date {
+    font-size: 12px;
+  }
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+  }
 }
 </style>

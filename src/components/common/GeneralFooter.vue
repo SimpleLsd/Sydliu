@@ -41,4 +41,18 @@ const scrollToTop = () => {
 .scroll-button:hover {
   color: var(--color-text-primary);
 }
+@media (max-width: 767px) {
+  .footer {
+    padding: 10px;
+  }
+  .logo {
+    width: 60px;
+  }
+  .title {
+    font-size: 20px;
+  }
+  .scroll-button {
+    font-size: 14px;
+  }
+}
 </style>

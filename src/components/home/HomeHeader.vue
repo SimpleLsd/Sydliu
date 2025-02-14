@@ -110,7 +110,7 @@ const tl = gsap.timeline()
 onMounted(() => {
   const W = window.innerWidth
   const H = window.innerHeight
-  console.log(W)
+  // console.log(W)
 
   tl.to('.container', {
     duration: 0,

@@ -1,6 +1,5 @@
 <template>
   <HomeHeader />
-
   <NavTop />
   <main class="main">
     <NavMain />
