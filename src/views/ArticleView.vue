@@ -119,7 +119,7 @@ const getTagNames = async () => {
 onMounted(async () => {
   await fetchArticle()
   await getTagNames()
-  console.log(tagNames.value)
+  // console.log(tagNames.value)
 })
 </script>
 

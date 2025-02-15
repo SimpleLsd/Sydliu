@@ -1,0 +1,72 @@
+{
+  "works_preview_img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_preview.png",
+  "figma_urls_primary": [
+    {
+      "title": "首页 + 详情页",
+      "num": "31 screen",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&p=f&t=NFNvGMX2RyhI5VdW-11",
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_01.png"
+    },
+    {
+      "title": "个人页 + 功能页",
+      "num": "94 screen",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=29-4980&p=f&t=NFNvGMX2RyhI5VdW-11",
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_02.png"
+    },
+    {
+      "title": "活动页",
+      "num": "22 screen",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13270&p=f&t=NFNvGMX2RyhI5VdW-11",
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_03.png"
+    },
+    {
+      "title": "演示",
+      "num": "17 screen",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13271&p=f&t=NFNvGMX2RyhI5VdW-11",
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_04.png"
+    }
+  ],
+  "figma_urls_secondary": [
+    {
+      "title": "素材 + icons",
+      "num": "200+ items",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13273&p=f&t=NFNvGMX2RyhI5VdW-11"
+    },
+    {
+      "title": "标注效果",
+      "num": "94 pages",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13274&p=f&t=NFNvGMX2RyhI5VdW-11"
+    },
+    {
+      "title": "组件 + 规范",
+      "num": "22 items",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13275&p=f&t=NFNvGMX2RyhI5VdW-11"
+    },
+    {
+      "title": "Web页面",
+      "num": "17 pages",
+      "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13276&p=f&t=NFNvGMX2RyhI5VdW-11"
+    }
+  ],
+  "works_imgs": [
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_1.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_2.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_3.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_4.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_5.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_6.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_7.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_8.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_9.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_10.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_11.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_12.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_13.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_14.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_15.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_16.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_17.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_18.png",
+    "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_19.png"
+  ]
+}

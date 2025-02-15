@@ -31,13 +31,11 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from 'vue'
-import type { Ref } from 'vue'
+import { useThemeStore } from '@/stores/theme'
 
-const toggleTheme = inject('$toggleTheme') as () => void
-const isDarkMode = inject('$isDarkMode') as Ref<boolean>
-
-// 在需要的地方调用 toggleTheme
+const themeStore = useThemeStore()
+const isDarkMode = themeStore.isDarkMode
+const toggleTheme = themeStore.toggleTheme
 </script>
 
 <style scoped>

@@ -21,122 +21,43 @@
               </div>
               <img src="@/assets/link.svg" alt="" class="link_icon" />
             </div>
-            <img
-              src="https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_preview.png"
-              alt=""
-              class="preview_img"
-            />
+            <img :src="worksData.works_preview_img" alt="" class="preview_img" />
           </a>
+
+          <!-- 主要区 -->
           <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&p=f&t=NFNvGMX2RyhI5VdW-11"
+            v-for="work in worksData.figma_urls_primary"
+            :key="work.title"
+            :href="work.url"
             class="works_secondary sections_colored link"
             target="_blank"
             ><div class="info_group">
               <div class="title_group">
-                <div class="title font_title">首页 + 详情页</div>
-                <div class="num font_subtitle">31 screens</div>
+                <div class="title font_title">{{ work.title }}</div>
+                <div class="num font_subtitle">{{ work.num }}</div>
               </div>
               <img src="@/assets/link.svg" alt="" class="link_icon" />
             </div>
-            <img
-              src="https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_01.png"
-              alt=""
-              class="secondary_img"
-            />
+            <img :src="work.img" alt="" class="secondary_img" />
           </a>
+
+          <!-- 次要区 -->
           <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=29-4980&p=f&t=NFNvGMX2RyhI5VdW-11"
-            class="works_secondary sections_colored link"
-            target="_blank"
-            ><div class="info_group">
-              <div class="title_group">
-                <div class="title font_title">个人 + 功能页</div>
-                <div class="num font_subtitle">94 screens</div>
-              </div>
-              <img src="@/assets/link.svg" alt="" class="link_icon" />
-            </div>
-            <img
-              src="https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_02.png"
-              alt=""
-              class="secondary_img"
-            />
-          </a>
-          <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13270&p=f&t=NFNvGMX2RyhI5VdW-11"
-            class="works_secondary sections_colored link"
-            target="_blank"
-            ><div class="info_group">
-              <div class="title_group">
-                <div class="title font_title">活动页</div>
-                <div class="num font_subtitle">22 screens</div>
-              </div>
-              <img src="@/assets/link.svg" alt="" class="link_icon" />
-            </div>
-            <img
-              src="https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_03.png"
-              alt=""
-              class="secondary_img"
-            />
-          </a>
-          <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13271&p=f&t=NFNvGMX2RyhI5VdW-11"
-            class="works_secondary sections_colored link"
-            target="_blank"
-            ><div class="info_group">
-              <div class="title_group">
-                <div class="title font_title">演示</div>
-                <div class="num font_subtitle">17 screens</div>
-              </div>
-              <img src="@/assets/link.svg" alt="" class="link_icon" />
-            </div>
-            <img
-              src="https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_04.png"
-              alt=""
-              class="secondary_img"
-            />
-          </a>
-          <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13273&p=f&t=NFNvGMX2RyhI5VdW-11"
+            v-for="work in worksData.figma_urls_secondary"
+            :key="work.title"
+            :href="work.url"
             class="works_section_below sections_colored"
             target="_blank"
             ><div class="title_group">
-              <div class="title font_title">素材+Icons</div>
-              <div class="num font_subtitle">200+ items</div>
-            </div>
-            <img src="@/assets/link.svg" alt="" class="link_icon" />
-          </a>
-          <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13274&p=f&t=NFNvGMX2RyhI5VdW-11"
-            class="works_section_below sections_colored"
-            target="_blank"
-            ><div class="title_group">
-              <div class="title font_title">标注效果</div>
-              <div class="num font_subtitle">9+ pages</div>
-            </div>
-            <img src="@/assets/link.svg" alt="" class="link_icon" />
-          </a>
-          <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13275&p=f&t=NFNvGMX2RyhI5VdW-11"
-            class="works_section_below sections_colored"
-            target="_blank"
-            ><div class="title_group">
-              <div class="title font_title">组件+规范</div>
-              <div class="num font_subtitle">100+ items</div>
-            </div>
-            <img src="@/assets/link.svg" alt="" class="link_icon" />
-          </a>
-          <a
-            href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13276&p=f&t=NFNvGMX2RyhI5VdW-11"
-            class="works_section_below sections_colored"
-            target="_blank"
-            ><div class="title_group">
-              <div class="title font_title">Web页面</div>
-              <div class="num font_subtitle">3+ pages</div>
+              <div class="title font_title">{{ work.title }}</div>
+              <div class="num font_subtitle">{{ work.num }}</div>
             </div>
             <img src="@/assets/link.svg" alt="" class="link_icon" />
           </a>
         </div>
       </div>
+
+      <!-- 个人产出 -->
       <div class="personal">
         <div class="title_group">
           <div class="en">Personal</div>
@@ -242,6 +163,8 @@
           </a>
         </div>
       </div>
+
+      <!--  -->
       <div class="pictures">
         <div class="title_group">
           <div class="en">Pictures</div>
@@ -255,27 +178,9 @@
 
 <script setup lang="ts">
 import WorksWaterfall from '@/components/common/WorksWaterfall.vue'
-const imgs = [
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_1.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_2.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_3.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_4.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_5.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_6.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_7.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_8.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_9.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_10.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_11.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_12.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_13.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_14.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_15.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_16.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_17.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_18.png',
-  'https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_pictures_19.png'
-]
+import worksData from '../../public/works.json'
+
+const imgs = worksData.works_imgs
 </script>
 
 <style scoped>
@@ -326,7 +231,7 @@ const imgs = [
 }
 /*  */
 .font_title {
-  font-weight: 500 !important;
+  font-weight: 600 !important;
   line-height: 1.3 !important;
   color: #222426;
 }
@@ -389,7 +294,7 @@ const imgs = [
 .sections_colored {
   background-color: #f0f1f6;
   border-radius: 12px;
-  box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2) inset;
+  /* box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2) inset; */
 }
 .works_secondary {
   position: relative;
