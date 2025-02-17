@@ -1,7 +1,7 @@
 <template>
   <div class="grid" ref="gridRef">
     <div v-for="img in props.imgs" :key="img" class="grid-item">
-      <img :src="img" alt="works" />
+      <img :src="img" alt="works" @load="onImageLoad" />
     </div>
   </div>
 </template>
@@ -20,11 +20,19 @@ const props = defineProps<{
 // 定义 ref
 const gridRef = ref<HTMLElement | null>(null)
 let viewer: Viewer | null = null
+let masonry: Masonry | null = null
+
+const onImageLoad = () => {
+  if (masonry) {
+    masonry.layout() // 手动触发布局更新
+  }
+}
 
 onMounted(async () => {
   await nextTick()
+
   const grid = document.querySelector('.grid') as HTMLElement
-  const masonry = new Masonry(grid, {
+  masonry = new Masonry(grid, {
     itemSelector: '.grid-item',
     columnWidth: '.grid-item',
     percentPosition: true,
@@ -84,6 +92,7 @@ onMounted(async () => {
     })
   }
 })
+
 onBeforeUnmount(() => {
   if (viewer) {
     viewer.destroy()

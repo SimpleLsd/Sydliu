@@ -8,6 +8,7 @@
           <div class="cn">工作内容</div>
         </div>
         <div class="sections_grid">
+          <!-- 突出区 -->
           <a
             class="works_preview sections_colored link"
             href="https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/"
@@ -171,7 +172,7 @@
           <div class="cn">图集</div>
         </div>
       </div>
-      <WorksWaterfall :imgs="imgs"> </WorksWaterfall>
+      <WorksWaterfall :imgs="imgs" class="waterfall"> </WorksWaterfall>
     </div>
   </div>
 </template>
@@ -184,6 +185,7 @@ const imgs = worksData.works_imgs
 </script>
 
 <style scoped>
+/* 主要区 */
 .main_scroll {
   width: 100%;
   color: var(--color-main);
@@ -192,10 +194,20 @@ const imgs = worksData.works_imgs
   grid-template-columns: minmax(10vw, 150px) 1fr;
   grid-auto-columns: 1fr;
 }
+.content {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 32px;
+}
+/* 导航栏 */
 .left_nav {
   width: 100%;
   height: 100vh;
 }
+/* 板块标题 */
 .title_group {
   width: 100%;
   display: flex;
@@ -211,35 +223,37 @@ const imgs = worksData.works_imgs
   font-size: 24px;
   font-weight: 300;
 }
-.content {
-  width: 100%;
-  min-width: 0;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  gap: 32px;
-}
+/* 链接优化 */
 .link {
   text-decoration: none;
   color: inherit;
 }
+/* 全局颜色 */
+.sections_colored {
+  background-color: #f0f1f6;
+  border-radius: 12px;
+  /* box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2) inset; */
+}
+/* ----------------- */
+/*     工作内容区     */
+/* ----------------- */
 .works {
   width: 100%;
   display: flex;
   flex-flow: column;
   gap: 16px;
 }
-/*  */
+/* 突出工作区字体 */
 .font_title {
   font-weight: 600 !important;
   line-height: 1.3 !important;
   color: #222426;
 }
-/*  */
 .font_subtitle {
   font-weight: 300;
   color: #616366;
 }
+/* 工作区网格布局定义 */
 .sections_grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -247,12 +261,14 @@ const imgs = worksData.works_imgs
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 }
+/* 突出工作区子网格定义 */
 .works_preview {
   position: relative;
   grid-area: 1 / 1 / 3 / 3;
   padding: 20px;
   overflow: hidden;
 }
+/* 突出工作区细则 */
 .works_preview .info_group {
   width: 120px;
   display: flex;
@@ -291,11 +307,7 @@ const imgs = worksData.works_imgs
   transform: translateY(-50%);
   filter: drop-shadow(0 24px 16px rgba(0, 0, 0, 0.1));
 }
-.sections_colored {
-  background-color: #f0f1f6;
-  border-radius: 12px;
-  /* box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2) inset; */
-}
+/* 次要工作区细则 */
 .works_secondary {
   position: relative;
   padding: 16px;
@@ -334,6 +346,7 @@ const imgs = worksData.works_imgs
   transform: translateY(-50%);
   filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.2));
 }
+/* 底部工作区细则 */
 .works_section_below {
   position: relative;
   padding: 16px;
@@ -361,6 +374,10 @@ const imgs = worksData.works_imgs
   height: 16px;
   opacity: 0.5;
 }
+
+/* ----------------- */
+/*     个人产出区     */
+/* ----------------- */
 .personal {
   width: 100%;
   display: flex;
@@ -374,6 +391,7 @@ const imgs = worksData.works_imgs
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 }
+/* 个人产出-左侧 */
 .auto_number {
   position: relative;
   padding: 24px;
@@ -409,8 +427,9 @@ const imgs = worksData.works_imgs
   right: calc(10% - 48px);
   top: 80%;
   transform: translateY(-52%);
-  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.2));
+  /* filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0)); */
 }
+/* 个人产出-右侧 */
 .github {
   position: relative;
   padding: 20px;
@@ -524,6 +543,7 @@ const imgs = worksData.works_imgs
   padding: 2px 6px;
   border-radius: 20px;
 }
+/* 图库区 */
 .pictures {
   width: 100%;
   display: flex;
