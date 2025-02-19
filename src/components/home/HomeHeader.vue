@@ -95,7 +95,7 @@
         y2="200"
         stroke="var(--color-main)"
         class="bottom-line"
-        stroke-width="0.5"
+        stroke-width="1"
         opacity="0"
       ></line>
     </svg>
@@ -108,9 +108,10 @@ import { gsap } from 'gsap'
 
 const tl = gsap.timeline()
 onMounted(() => {
-  const W = window.innerWidth
+  const appElement = document.getElementById('app')
+  const W = appElement ? appElement.offsetWidth : 0
   const H = window.innerHeight
-  // console.log(W)
+  console.log(W, ' ', H)
 
   tl.to('.container', {
     duration: 0,
@@ -248,7 +249,7 @@ onMounted(() => {
       }),
       gsap.to('.bottom-line', {
         duration: 0.5,
-        opacity: 1
+        opacity: 0.2
       })
     ])
 })
@@ -257,7 +258,6 @@ onMounted(() => {
 <style scoped>
 .logo_svg {
   width: 100%;
-
   padding: 24px;
   height: auto;
   margin-bottom: 80px;
