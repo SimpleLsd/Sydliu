@@ -126,5 +126,12 @@ onBeforeUnmount(() => {
   width: 100%;
   height: auto;
   border-radius: 8px;
+  border: 1px solid var(--color-border-only-light);
+}
+@media (max-width: 768px) {
+  .grid-item {
+    width: 50%;
+    padding: 4px;
+  }
 }
 </style>

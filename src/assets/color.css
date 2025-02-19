@@ -36,6 +36,8 @@
   --color-text-secondary: var(--gray--7);
   /* code */
   --color-code-bg: var(--code-light);
+  /* border only show in light mode */
+  --color-border-only-light: var(--gray--4);
 }
 
 body.dark-mode {
@@ -53,6 +55,8 @@ body.dark-mode {
   --color-text-secondary: var(--gray--7);
   /* code */
   --color-code-bg: var(--code-dark);
+  /* border only show in light mode */
+  --color-border-only-light: var(--code-dark);
 }
 
 /* old media logic */

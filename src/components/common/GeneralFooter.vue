@@ -14,6 +14,8 @@ const scrollToTop = () => {
 
 <style scoped>
 .footer {
+  width: 100%;
+  height: auto;
   display: flex;
   gap: 12px;
   flex-direction: column;

@@ -2,10 +2,14 @@
   <div class="main_scroll">
     <div class="left_nav"></div>
     <div class="content">
+      <!-- 工作内容 -->
       <div class="works">
         <div class="title_group">
           <div class="en">Works</div>
-          <div class="cn">工作内容</div>
+          <div class="cn">
+            工作内容- <span class="works_pc">点击前往Figma页面</span
+            ><span class="works_mobile">建议使用电脑并点击前往</span>
+          </div>
         </div>
         <div class="sections_grid">
           <!-- 突出区 -->
@@ -64,9 +68,11 @@
           <div class="en">Personal</div>
           <div class="cn">个人产出</div>
         </div>
+        <!-- 父元素布局 -->
         <div class="sections_grid">
+          <!-- 左侧 -->
           <a href="" class="auto_number sections_colored link">
-            <div class="title_grop">
+            <div class="title_group">
               <div class="logos">
                 <img src="@/assets/figma_logo_square.svg" alt="" />
                 <div class="x">×</div>
@@ -74,21 +80,23 @@
               </div>
               <div class="title">3000+</div>
             </div>
+            <!-- 右侧图片 -->
             <img
               src="https://server.sydliu.me:8088/statics/sydliu_me_statics/works/personal_AutoNumber_preview.png"
               alt=""
               class="auto_number_img"
             />
           </a>
+          <!-- 右侧 -->
           <a href="" class="github sections_colored link">
             <div class="title_group">
               <img src="@/assets/github_logo.svg" alt="" class="github_logo" />
               <div class="title">SimpleLsd</div>
               <div class="info_group">
                 <div class="info">6 Repositories</div>
-                <img src="@/assets/link.svg" alt="" class="link" />
               </div>
             </div>
+            <!-- 右侧仓库 -->
             <div class="repositories">
               <div class="repository">
                 <div class="info">
@@ -165,20 +173,23 @@
         </div>
       </div>
 
-      <!--  -->
+      <!-- 图集 -->
       <div class="pictures">
         <div class="title_group">
           <div class="en">Pictures</div>
           <div class="cn">图集</div>
         </div>
+        <WorksWaterfall :imgs="imgs" class="waterfall"> </WorksWaterfall>
       </div>
-      <WorksWaterfall :imgs="imgs" class="waterfall"> </WorksWaterfall>
+      <GeneralFooter />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import WorksWaterfall from '@/components/common/WorksWaterfall.vue'
+import GeneralFooter from '../components/common/GeneralFooter.vue'
+
 import worksData from '../../public/works.json'
 
 const imgs = worksData.works_imgs
@@ -253,6 +264,16 @@ const imgs = worksData.works_imgs
   font-weight: 300;
   color: #616366;
 }
+/* 工作区副标题显示逻辑 */
+.works_pc {
+  display: inline-block;
+  font-weight: inherit;
+}
+.works_mobile {
+  display: none;
+  font-weight: inherit;
+}
+/* ----------------- */
 /* 工作区网格布局定义 */
 .sections_grid {
   display: grid;
@@ -261,6 +282,7 @@ const imgs = worksData.works_imgs
   grid-column-gap: 24px;
   grid-row-gap: 24px;
 }
+/* ----------------- */
 /* 突出工作区子网格定义 */
 .works_preview {
   position: relative;
@@ -297,16 +319,8 @@ const imgs = worksData.works_imgs
   width: 24px;
   height: 24px;
 }
-.works_preview .preview_img {
-  position: absolute;
-  width: 332px;
-  height: 560px;
-  rotate: -12deg;
-  right: calc(20% - 200px);
-  top: 50%;
-  transform: translateY(-50%);
-  filter: drop-shadow(0 24px 16px rgba(0, 0, 0, 0.1));
-}
+/* --图片规则在动画区 */
+/* ----------------- */
 /* 次要工作区细则 */
 .works_secondary {
   position: relative;
@@ -336,16 +350,8 @@ const imgs = worksData.works_imgs
   width: 16px;
   height: 16px;
 }
-.works_secondary .secondary_img {
-  position: absolute;
-  width: 80px;
-  height: 168px;
-  rotate: -12deg;
-  right: calc(20% - 64px);
-  top: 80%;
-  transform: translateY(-50%);
-  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.2));
-}
+/* --图片规则在动画区 */
+
 /* 底部工作区细则 */
 .works_section_below {
   position: relative;
@@ -368,11 +374,6 @@ const imgs = worksData.works_imgs
 }
 .works_section_below .title_group .num {
   font-size: 14px;
-}
-.works_section_below .link_icon {
-  width: 16px;
-  height: 16px;
-  opacity: 0.5;
 }
 
 /* ----------------- */
@@ -397,7 +398,7 @@ const imgs = worksData.works_imgs
   padding: 24px;
   overflow: hidden;
 }
-.auto_number .title_grop {
+.auto_number .title_group {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -405,13 +406,13 @@ const imgs = worksData.works_imgs
   justify-content: center;
   height: 100%;
 }
-.auto_number .title_grop .logos {
+.auto_number .title_group .logos {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 8px;
 }
-.auto_number .title_grop .logos .x {
+.auto_number .title_group .logos .x {
   font-weight: 500;
   font-size: 12px;
   color: #0066ff;
@@ -421,14 +422,7 @@ const imgs = worksData.works_imgs
   color: #0066ff;
   font-weight: 600;
 }
-.auto_number .auto_number_img {
-  position: absolute;
-  width: 260px;
-  right: calc(10% - 48px);
-  top: 80%;
-  transform: translateY(-52%);
-  /* filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0)); */
-}
+
 /* 个人产出-右侧 */
 .github {
   position: relative;
@@ -468,18 +462,7 @@ const imgs = worksData.works_imgs
   height: 16px;
   opacity: 0.4;
 }
-.repositories {
-  display: grid;
-  width: 332px;
-  height: 216px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 12px;
-  position: absolute;
-  right: calc(5% - 54px);
-  top: 50%;
-  transform: translateY(-50%);
-}
+
 .repository {
   position: relative;
   padding: 7px 10px;
@@ -543,11 +526,254 @@ const imgs = worksData.works_imgs
   padding: 2px 6px;
   border-radius: 20px;
 }
-/* 图库区 */
+/* ----------------- */
+/*       图库区      */
+/* ---------------- */
 .pictures {
   width: 100%;
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   gap: 16px;
+}
+
+/* ------------------ */
+/*      悬浮动画      */
+/* ----------------- */
+
+/* 图片原始定义区 */
+.works_preview .preview_img {
+  position: absolute;
+  width: 332px;
+  height: 560px;
+  rotate: -12deg;
+  right: calc(20% - 200px);
+  top: 50%;
+  transform: scale(1) translateY(-50%);
+  transition: transform 0.3s ease;
+
+  filter: drop-shadow(0 24px 16px rgba(0, 0, 0, 0.1));
+}
+.works_secondary .secondary_img {
+  position: absolute;
+  width: 80px;
+  height: 168px;
+  rotate: -12deg;
+  right: calc(20% - 64px);
+  top: 80%;
+  transform: scale(1) translateY(-50%);
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.2));
+}
+.works_section_below .link_icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  transition: opacity 0.3s;
+}
+.auto_number .auto_number_img {
+  position: absolute;
+  width: 260px;
+  right: calc(10% - 48px);
+  top: 80%;
+  transform: scale(1) translateY(-52%);
+  transition: transform 0.3s ease;
+  /* filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0)); */
+}
+.repositories {
+  display: grid;
+  width: 332px;
+  height: 216px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 12px;
+  position: absolute;
+  right: calc(5% - 100px);
+  top: 50%;
+  transform: scale(1) translateY(-50%);
+  transition: transform 0.3s ease;
+}
+/* 悬浮动画定义区 */
+.works_preview:hover .preview_img {
+  transform: scale(1.1) translateY(-50%);
+}
+.works_secondary:hover .secondary_img {
+  transform: scale(1.1) translateY(-50%);
+}
+.works_section_below:hover .link_icon {
+  opacity: 1;
+}
+.auto_number:hover .auto_number_img {
+  transform: scale(1.1) translateY(-50%);
+}
+.github:hover .repositories {
+  transform: scale(1.1) translateY(-50%);
+}
+
+/* ----------------- */
+/*      媒体识别      */
+/* ----------------- */
+@media (max-width: 768px) {
+  /* 基本布局 */
+  .main_scroll {
+    grid-template-columns: 0 1fr;
+  }
+  .left_nav {
+    width: 0;
+  }
+  .content {
+    padding-right: 0px !important;
+  }
+
+  /* 板块标题 */
+  .title_group .en {
+    font-size: 28px;
+    font-weight: 600;
+    margin-right: 8px;
+  }
+  .title_group .cn {
+    font-size: 16px;
+    font-weight: 400;
+  }
+  /* 副标题显示逻辑 */
+  .works_pc {
+    display: none;
+  }
+  .works_mobile {
+    display: inline-block;
+  }
+  /* --------- */
+  /* 主要工作区 */
+  /* --------- */
+  .sections_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 120px) repeat(2, 120px) repeat(2, 80px);
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+  }
+  .works_preview .info_group .title {
+    font-size: 28px;
+  }
+  .works_preview .info_group .subtitle {
+    font-size: 14px;
+  }
+  .works_preview .info_group .link_icon {
+    width: 16px;
+    height: 16px;
+  }
+  .works_preview .preview_img {
+    position: absolute;
+    width: calc(332px * 0.9);
+    height: calc(560px * 0.9);
+    rotate: -12deg;
+    right: calc(20% - 220px);
+    top: 50%;
+    transform: scale(1) translateY(-50%);
+  }
+
+  /* --------- */
+  /* 次要工作区 */
+  /* --------- */
+  .works_secondary .info_group {
+    width: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .works_secondary .info_group .title_group {
+    gap: 0px;
+  }
+  .works_secondary .info_group .title {
+    font-size: 16px;
+  }
+  .works_secondary .info_group .num {
+    font-size: 12px;
+  }
+  .works_secondary .info_group .link_icon {
+    width: 12px;
+    height: 12px;
+  }
+  .works_secondary .secondary_img {
+    position: absolute;
+    width: calc(80px * 0.9);
+    height: calc(168px * 0.9);
+    rotate: -12deg;
+    right: calc(20% - 64px);
+    top: 80%;
+    transform: scale(1) translateY(-50%);
+  }
+
+  /* --------- */
+  /* 底部工作区 */
+  /* --------- */
+  .works_section_below .title_group .title {
+    font-size: 16px;
+  }
+  .works_section_below .title_group .num {
+    font-size: 12px;
+  }
+  .works_section_below .link_icon {
+    width: 12px;
+    height: 12px;
+  }
+  /* --------- */
+  /* 个人产出区 */
+  /* --------- */
+  .personal .sections_grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(2, 160px);
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+  }
+  .auto_number {
+    padding: 16px;
+  }
+  .auto_number .title_group {
+    gap: 4px;
+  }
+  .auto_number .title_group .logos {
+    gap: 4px;
+  }
+  .auto_number .title {
+    font-size: 24px;
+  }
+  .auto_number .auto_number_img {
+    position: absolute;
+    width: calc(260px * 0.9);
+    right: calc(10% - 40px);
+    top: 80%;
+  }
+  .github {
+    padding: 16px;
+  }
+  .github .title_group {
+    gap: 4px;
+  }
+  .github .title_group .info_group {
+    gap: 4px;
+  }
+  .github .title_group .github_logo {
+    width: 40px;
+    height: 40px;
+  }
+  .github .title_group .title {
+    font-size: 20px;
+  }
+  .github .title_group .info_group .info {
+    font-size: 12px;
+  }
+  .github .title_group .info_group .link {
+    width: 12px;
+    height: 12px;
+  }
+  .repositories {
+    position: absolute;
+    right: calc(5% - 120px);
+    top: 50%;
+    transform: scale(0.9) translateY(-50%);
+  }
+  /* --------- */
 }
 </style>
