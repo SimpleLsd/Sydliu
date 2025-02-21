@@ -1,11 +1,11 @@
 <template>
   <div class="website_update_info">
-    <div class="t">May 13</div>
+    <div class="t">Feb 19</div>
     <div class="b">
-      <div class="l">给网站增加了交互底纹，鼠标在空白处移动时可以触发底纹变化</div>
+      <div class="l">作品展示页面完成，内含前往Figma页面的入口</div>
       <div class="r">
-        <div class="en">View Details（暂不可用）</div>
-        <div class="view_details">
+        <div class="en">View Details</div>
+        <div class="view_details" @click="navigateToWorks">
           查看详情
           <img src="@/assets/view_details.svg" alt="" />
         </div>
@@ -14,7 +14,15 @@
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const navigateToWorks = () => {
+  router.push('/works')
+}
+</script>
 
 <style scoped>
 .website_update_info {
@@ -52,7 +60,6 @@
   font-size: 24px;
   color: var(--color-text-primary);
   cursor: pointer;
-  cursor: no-drop;
 }
 .en {
   color: var(--color-text-secondary);
