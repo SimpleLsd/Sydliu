@@ -16,7 +16,6 @@
       <div v-if="bookmarkData?.favicon">
         <img :src="bookmarkData?.favicon" alt="" />
       </div>
-      <div v-else>没有图标</div>
       <div>{{ props.url }}</div>
     </div>
   </a>
@@ -44,14 +43,15 @@ const bookmarkData = ref<{
 
 const fetchBookmarkDetails = async (url: string) => {
   try {
+    const encodedUrl = encodeURIComponent(url)
     const { data } = await axios.get(`https://server.sydliu.me:8088/api/proxy`, {
-      params: { url }
+      params: { url: encodedUrl }
     })
     const parser = new DOMParser()
     const doc = parser.parseFromString(data, 'text/html')
 
     // 判断是否是 GitHub 链接
-    const isGitHub = url.includes('github.com')
+    const isGitHub = /github\.com/.test(url)
 
     let favicon =
       doc.querySelector('link[rel="icon"]')?.getAttribute('href') ||
@@ -138,6 +138,7 @@ onMounted(() => {
   text-decoration: none;
   border-radius: 4px;
   border: 1px solid var(--color-border);
+  cursor: pointer;
 }
 .url_block:hover {
   /* background-color: var(--color-bg-light-hover); */

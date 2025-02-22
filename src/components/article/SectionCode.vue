@@ -4,10 +4,9 @@
       <div class="language">{{ props.section.typeData.language }}</div>
       <div class="copy unselectable" @click="copyCode">复制代码</div>
     </div>
-    <pre
-      v-for="(richText, index) in props.section.typeData.rich_text"
-      :key="index"
-    ><code :class="`language-${getLanguage}`">{{ richText.text?.content || "" }}</code></pre>
+    <pre v-for="(richText, index) in props.section.typeData.rich_text" :key="index">
+  <code :class="`language-${getLanguage}`">{{ richText.text?.content || ''}}</code>
+</pre>
   </div>
 </template>
 
@@ -42,14 +41,12 @@ onMounted(() => {
   document.querySelectorAll('pre code').forEach((block) => {
     const element = block as HTMLElement
 
-    // 如果已经高亮，先移除高亮状态
-    if (element.dataset.highlighted) {
-      element.innerHTML = element.textContent || '' // 重置内容为纯文本
-      delete element.dataset.highlighted // 移除高亮标记
-    }
+    // 如果该元素已经高亮过，跳过
+    if (element.dataset.highlighted) return
 
     // 使用 highlightElement 进行高亮
     hljs.highlightElement(element)
+    element.dataset.highlighted = 'true' // 标记为已高亮
   })
 })
 </script>
@@ -77,6 +74,7 @@ onMounted(() => {
   font-weight: 300;
   cursor: pointer;
 }
+pre,
 code {
   padding-top: 0 !important;
   background-color: var(--color-code-bg);
