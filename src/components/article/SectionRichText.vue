@@ -23,10 +23,10 @@
         class="mention-link"
       >
         <img
-          v-if="richText.mention.link_mention?.icon_url"
+          v-if="iconUrlAvailable"
           :src="richText.mention.link_mention?.icon_url"
-          alt="Link Icon"
           class="mention-icon"
+          @error="handleImageError"
         />
         {{ richText.mention.link_mention?.title || richText.plain_text }}
       </a>
@@ -36,6 +36,13 @@
 
 <script setup lang="ts">
 import type { RichText } from '@/interfaces/article'
+import { ref } from 'vue'
+
+const iconUrlAvailable = ref(true)
+
+const handleImageError = () => {
+  iconUrlAvailable.value = false
+}
 
 const props = defineProps<{
   richTexts: RichText[]
