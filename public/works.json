@@ -5,25 +5,29 @@
       "title": "首页 + 详情页",
       "num": "31 screen",
       "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=0-1&p=f&t=NFNvGMX2RyhI5VdW-11",
-      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_01.png"
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_01.png",
+      "route": "homeanddetails"
     },
     {
       "title": "个人页 + 功能页",
       "num": "94 screen",
       "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=29-4980&p=f&t=NFNvGMX2RyhI5VdW-11",
-      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_02.png"
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_02.png",
+      "route": "personalandfunctions"
     },
     {
       "title": "活动页",
       "num": "22 screen",
       "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13270&p=f&t=NFNvGMX2RyhI5VdW-11",
-      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_03.png"
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_03.png",
+      "route": "activities"
     },
     {
       "title": "演示",
       "num": "17 screen",
       "url": "https://www.figma.com/design/C5vgjVM0CQ40XSkBHBl12j/%F0%9F%93%95-%E4%BD%9C%E5%93%81%E9%9B%86?node-id=87-13271&p=f&t=NFNvGMX2RyhI5VdW-11",
-      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_04.png"
+      "img": "https://server.sydliu.me:8088/statics/sydliu_me_statics/works/works_secondary_04.png",
+      "route": "previews"
     }
   ],
   "figma_urls_secondary": [

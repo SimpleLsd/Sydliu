@@ -22,7 +22,7 @@
               <img src="@/assets/figma_logo.svg" alt="" class="figma_logo" />
               <div class="preview_title_group">
                 <div class="title font_title">总览</div>
-                <div class="subtitle font_subtitle">附带作品集内索引和源设计链接</div>
+                <div class="subtitle font_subtitle">前往Figma页面查看总览和索引</div>
               </div>
               <img src="@/assets/link.svg" alt="" class="link_icon" />
             </div>
@@ -33,9 +33,9 @@
           <a
             v-for="work in worksData.figma_urls_primary"
             :key="work.title"
-            :href="work.url"
             class="works_secondary sections_colored link"
             target="_blank"
+            @click="navigateToDetail(work.route)"
             ><div class="info_group">
               <div class="title_group">
                 <div class="title font_title">{{ work.title }}</div>
@@ -66,7 +66,7 @@
       <div class="personal">
         <div class="title_group">
           <div class="en">Personal</div>
-          <div class="cn">个人产出</div>
+          <div class="cn">个人产出 - 点击前往站内文章页面</div>
         </div>
         <!-- 父元素布局 -->
         <div class="sections_grid">
@@ -187,12 +187,18 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
 import WorksWaterfall from '@/components/common/WorksWaterfall.vue'
 import GeneralFooter from '../components/common/GeneralFooter.vue'
+const router = useRouter()
 
 import worksData from '../../public/works.json'
 
 const imgs = worksData.works_imgs
+
+const navigateToDetail = (route: any) => {
+  router.push(`works/${route}`)
+}
 </script>
 
 <style scoped>
@@ -237,6 +243,7 @@ const imgs = worksData.works_imgs
 /* 链接优化 */
 .link {
   text-decoration: none;
+  cursor: pointer;
   color: inherit;
 }
 /* 全局颜色 */
