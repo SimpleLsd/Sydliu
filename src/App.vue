@@ -3,7 +3,7 @@
   <NavTop />
   <main class="main">
     <NavMain />
-    <RouterView />
+    <router-view :key="$route.fullPath"></router-view>
   </main>
 </template>
 
@@ -16,11 +16,11 @@ import NavTop from './components/common/NavTop.vue'
 
 <style scoped>
 .main {
+  width: 100%;
   padding: 0 24px;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: auto 1fr;
-  width: 100%;
   flex-flow: row;
   justify-content: space-between;
 }

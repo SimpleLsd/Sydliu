@@ -1,19 +1,34 @@
 <template>
-  <div class="content" :class="{ padd_top: !props.isFirst }">
+  <div class="detail_content" :class="{ padding_top: !props.isFirst }">
     <div class="section_title">{{ props.work.name }}</div>
     <div class="section_content">
       <div class="info_group">
-        <div class="img_title">
-          <span>{{ currentIndex + 1 }}.</span><span>{{ props.work.data[currentIndex].title }}</span>
+        <div class="title_group">
+          <div class="img_title">
+            <span v-if="totalNum != 1">{{ currentIndex + 1 }}.</span
+            ><span>{{ props.work.data[currentIndex].title }}</span>
+          </div>
+          <!-- Indicator -->
+          <div v-if="totalNum > 1" class="indicator">
+            <span
+              v-for="(img, index) in imgList"
+              :key="index"
+              :class="{ active: index === currentIndex }"
+            ></span>
+          </div>
         </div>
         <div class="actions">
-          <div v-if="!isFirst" class="next" @click="goToPrev">
-            <img src="@/assets/arrow.svg" class="up" alt="" srcset="" />
-          </div>
           <div v-if="!isLast" class="next" @click="goToNext">
             <img src="@/assets/arrow.svg" class="down" alt="" srcset="" />
           </div>
-          <div v-if="totalNum != 1" class="next" @click="nextImg">
+          <div v-if="isLast" class="next" @click="scrollToBottom">
+            <img src="@/assets/arrow.svg" class="down" alt="" srcset="" />
+          </div>
+          <div v-if="!isFirst" class="next" @click="goToPrev">
+            <img src="@/assets/arrow.svg" class="up" alt="" srcset="" />
+          </div>
+          <div v-if="totalNum != 1" class="line">|</div>
+          <div v-if="totalNum != 1" class="next next_right" @click="nextImg">
             <img src="@/assets/arrow.svg" class="right" alt="" srcset="" />
           </div>
           <!-- {{ totalNum }} -->
@@ -32,17 +47,19 @@
           v-for="(img, index) in imgList"
           :src="img.url"
           :key="index"
-          :class="[`img${img.name}`, 'img']"
+          :class="[`img${img.name}`, 'img', { only: totalNum === 1 }]"
           @click="nextImg"
+          @touchstart="handleTouchStart"
+          @touchend="handleTouchEnd"
         />
-        <div v-if="totalNum === 1" class="no_more_img second"></div>
+        <!-- <div v-if="totalNum === 1" class="no_more_img second"></div> -->
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 const props = defineProps<{
   work: {
     name: string
@@ -73,8 +90,6 @@ const imgList = ref(
 const totalNum = ref(props.work.data.length)
 const currentIndex = ref(0)
 
-console.log(totalNum.value)
-
 const nextImg = () => {
   document.querySelector('.waste')?.classList.remove('waste')
 
@@ -89,7 +104,25 @@ const nextImg = () => {
   currentIndex.value = nextIndex
   document.querySelector(`.img${afterNextName}`)?.classList.add('second')
 }
+const scrollToBottom = () => {
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: 'smooth' // 平滑滚动
+  })
+}
 
+let touchStartX = 0 // 记录触摸起始点
+const handleTouchStart = (event: TouchEvent) => {
+  touchStartX = event.touches[0].clientX // 获取触摸起点
+}
+const handleTouchEnd = (event: TouchEvent) => {
+  const touchEndX = event.changedTouches[0].clientX // 获取触摸终点
+  const diff = touchStartX - touchEndX // 计算滑动方向
+  if (diff > 20) {
+    // 右滑（左滑动手指），切换到下一张
+    nextImg()
+  }
+}
 onMounted(() => {
   const firstImg = document.getElementsByClassName(
     `img${imgList.value[currentIndex.value].name}`
@@ -108,23 +141,23 @@ onMounted(() => {
 </script>
 
 <style scoped>
-.content {
+.detail_content {
   width: 100%;
   min-width: 0;
   display: flex;
   flex-flow: column;
   align-items: start;
-  gap: 32px;
+  gap: 24px;
   /* border: 1px solid #ffffff30; */
 }
-.padd_top {
+.padding_top {
   padding-top: 20px;
 }
 .section_content {
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 600px;
-  gap: 32px;
+  grid-template-columns: 1fr 550px;
+  gap: 60px;
 }
 .info_group {
   display: flex;
@@ -209,6 +242,14 @@ onMounted(() => {
   opacity: 1;
   transform: scale(1);
 }
+.only {
+  width: 400px !important;
+  /* height: 800px; */
+  /* background-color: #ffffff30; */
+  border-radius: 10px;
+  cursor: default;
+  position: relative;
+}
 .no_more_img {
   width: 360px;
   height: 800px;
@@ -244,5 +285,64 @@ li {
 }
 .down {
   transform: rotate(0deg);
+}
+.indicator {
+  display: flex;
+  justify-content: start;
+  margin-top: 8px;
+}
+.indicator span {
+  width: 8px;
+  height: 8px;
+  margin: 0 4px;
+  background: var(--color-button-tint-hover);
+  border-radius: 4px;
+  transition: all 0.3s ease-out;
+}
+.indicator span.active {
+  width: 24px;
+}
+/* 媒体识别 */
+@media (max-width: 768px) {
+  .detail_content {
+    gap: 16px;
+  }
+  .section_content {
+    width: 100%;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .info_group {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    gap: 16px;
+    /* border: 1px solid #ffffff30; */
+  }
+  .img_title {
+    font-size: 20px;
+  }
+  .img_group {
+    width: 365px;
+  }
+  .img_group img {
+    width: 300px;
+  }
+  .second {
+    left: 70px;
+  }
+  .descriptions {
+    display: none;
+  }
+  .line,
+  .next_right {
+    display: none;
+  }
+  .only {
+    width: 100% !important;
+  }
 }
 </style>

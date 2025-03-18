@@ -197,11 +197,11 @@
     {
       "name": "分类修改-2022",
       "data": [
-        { "name": "_10_08", "title": "精选", "description": [] },
-        { "name": "_10_07", "title": "全部标签", "description": [] },
-        { "name": "_10_06", "title": "筛选完成", "description": [] },
-        { "name": "_10_05", "title": "细分", "description": [] },
-        { "name": "_10_04", "title": "排序方式", "description": [] },
+        { "name": "_10_07", "title": "精选", "description": [] },
+        { "name": "_10_06", "title": "全部标签", "description": [] },
+        { "name": "_10_05", "title": "筛选完成", "description": [] },
+        { "name": "_10_04", "title": "细分", "description": [] },
+        { "name": "_10_03", "title": "排序方式", "description": [] },
         { "name": "_10_02", "title": "筛选方式", "description": [] },
         { "name": "_10_01", "title": "筛选无结果", "description": [] }
       ]
@@ -232,32 +232,32 @@
   "previews": [
     {
       "name": "切换banner背景变色",
-      "data": [{ "name": "_13_08", "title": "幸运大转盘", "description": [] }]
+      "data": [{ "name": "_13_08", "title": "切换banner背景变色", "description": [] }]
     },
     {
       "name": "进入触发Banner横移",
-      "data": [{ "name": "_13_07", "title": "幸运大转盘", "description": [] }]
+      "data": [{ "name": "_13_07", "title": "进入触发Banner横移", "description": [] }]
     },
     {
       "name": "首页上滑顶部配色",
-      "data": [{ "name": "_13_06", "title": "幸运大转盘", "description": [] }]
+      "data": [{ "name": "_13_06", "title": "首页上滑顶部配色", "description": [] }]
     },
     {
       "name": "导航栏icon",
-      "data": [{ "name": "_13_05", "title": "夏日免单活动", "description": [] }]
+      "data": [{ "name": "_13_05", "title": "导航栏icon", "description": [] }]
     },
     {
       "name": "会员页加载",
-      "data": [{ "name": "_13_04", "title": "端午活动", "description": [] }]
+      "data": [{ "name": "_13_04", "title": "会员页加载", "description": [] }]
     },
     {
       "name": "福利中心载入",
-      "data": [{ "name": "_13_03", "title": "2022圣诞活动", "description": [] }]
+      "data": [{ "name": "_13_03", "title": "福利中心载入", "description": [] }]
     },
-    { "name": "列表展开", "data": [{ "name": "_13_02", "title": "元旦活动", "description": [] }] },
+    { "name": "列表展开", "data": [{ "name": "_13_02", "title": "列表展开", "description": [] }] },
     {
       "name": "自动印章效果",
-      "data": [{ "name": "_13_01", "title": "端午活动", "description": [] }]
+      "data": [{ "name": "_13_01", "title": "自动印章效果", "description": [] }]
     }
   ]
 }

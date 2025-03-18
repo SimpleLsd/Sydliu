@@ -192,12 +192,12 @@ import WorksWaterfall from '@/components/common/WorksWaterfall.vue'
 import GeneralFooter from '../components/common/GeneralFooter.vue'
 const router = useRouter()
 
-import worksData from '../../public/works.json'
+import worksData from '@/works.json'
 
 const imgs = worksData.works_imgs
 
 const navigateToDetail = (route: any) => {
-  router.push(`works/${route}`)
+  router.push(`${route}`)
 }
 </script>
 

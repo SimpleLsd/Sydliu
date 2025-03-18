@@ -3,6 +3,7 @@
     <img src="@/assets/logo.svg" alt="Logo" class="logo" />
     <div class="title">S Y D L I U . M E</div>
     <div @click="scrollToTop" class="scroll-button">返回顶部 ⬆</div>
+    <div class="ICP">粤ICP备2024337604号-1</div>
   </footer>
 </template>
 
@@ -56,5 +57,9 @@ const scrollToTop = () => {
   .scroll-button {
     font-size: 14px;
   }
+}
+.ICP {
+  font-size: 12px;
+  color: var(--color-text-secondary);
 }
 </style>
