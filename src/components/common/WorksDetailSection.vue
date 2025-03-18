@@ -91,6 +91,7 @@ const totalNum = ref(props.work.data.length)
 const currentIndex = ref(0)
 
 const nextImg = () => {
+  if (totalNum.value === 1) return
   document.querySelector('.waste')?.classList.remove('waste')
 
   const currentName = imgList.value[currentIndex.value].name

@@ -197,7 +197,7 @@ import worksData from '@/works.json'
 const imgs = worksData.works_imgs
 
 const navigateToDetail = (route: any) => {
-  router.push(`${route}`)
+  router.push(`works/${route}`)
 }
 </script>
 
