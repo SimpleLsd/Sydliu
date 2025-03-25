@@ -111,7 +111,7 @@ onMounted(() => {
   const appElement = document.getElementById('app')
   const W = appElement ? appElement.offsetWidth : 0
   const H = window.innerHeight
-  console.log(W, ' ', H)
+  // console.log(W, ' ', H)
 
   tl.to('.container', {
     duration: 0,

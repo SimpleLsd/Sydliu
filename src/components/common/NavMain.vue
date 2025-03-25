@@ -1,6 +1,9 @@
 <template>
   <div class="nav_main">
     <div class="content">
+      <div class="logo-group" @click="goToHome">
+        <img src="@/assets/logo-group.svg" alt="" />
+      </div>
       <div class="title_group">
         <div class="title">SYDLIU.ME</div>
       </div>
@@ -32,6 +35,8 @@
 
 <script lang="ts" setup>
 import { useThemeStore } from '@/stores/theme'
+import { useGoToHome } from '@/functions/useGoToHome'
+const { goToHome } = useGoToHome()
 
 const themeStore = useThemeStore()
 const isDarkMode = themeStore.isDarkMode
@@ -39,11 +44,6 @@ const toggleTheme = themeStore.toggleTheme
 </script>
 
 <style scoped>
-@media (max-width: 767px) {
-  .nav_main {
-    display: none;
-  }
-}
 .content {
   position: sticky;
   top: 24px;
@@ -56,6 +56,23 @@ const toggleTheme = themeStore.toggleTheme
   color: var(--color-text-primary);
   border: 1px solid var(--color-nav-border);
   background-color: var(--color-nav-bg);
+}
+.title_group {
+  display: none;
+}
+.logo-group {
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.logo-group img {
+  height: 40px;
+  transition: all 0.2s ease-out;
+}
+.logo-group:hover img {
+  height: 44px;
 }
 .divider {
   width: 100%;
@@ -147,5 +164,18 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(14px);
+}
+
+@media (max-width: 767px) {
+  .nav_main {
+    display: none;
+  }
+}
+
+@media (max-width: 1279px) {
+  .content {
+    /* display: none; */
+    width: 240px;
+  }
 }
 </style>

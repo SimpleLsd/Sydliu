@@ -1,7 +1,7 @@
 <template>
   <div class="nav-top" :class="{ hidden: isHidden }">
     <img class="menu" src="@/assets/menu.svg" />
-    <div class="logo-svg">
+    <div class="logo-svg" @click="goToHome">
       <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" class="svg">
         <!-- 中心点 -->
         <g class="dash-group-m">
@@ -121,6 +121,8 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { gsap } from 'gsap'
 import { useThemeStore } from '@/stores/theme'
+import { useGoToHome } from '@/functions/useGoToHome'
+const { goToHome } = useGoToHome()
 
 // const isDarkMode = themeStore.isDarkMode
 const themeStore = useThemeStore()

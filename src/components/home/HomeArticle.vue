@@ -9,7 +9,7 @@
         <div class="tag" v-for="(tag, index) in tagNames.slice(0, 3)" :key="index">{{ tag }}</div>
       </div>
     </div>
-    <div class="title">
+    <div class="title" @click="navigateToArticle">
       {{ title }}
     </div>
   </div>
@@ -73,16 +73,19 @@ onMounted(getTagNames)
 }
 .cover {
   width: 100%;
-  height: auto;
+  aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .cover img {
   width: 100%;
-  display: block;
-  position: relative;
+  transition: all 0.3s ease-out;
 }
+
 .date_tags {
   display: flex;
   justify-content: space-between;
@@ -103,8 +106,23 @@ onMounted(getTagNames)
   font-size: 12px;
 }
 .title {
+  opacity: 0.9;
   font-size: 24px;
   font-weight: 500;
+  cursor: pointer;
+  transition: all 0.05s;
+}
+.cover:hover img {
+  width: 103%;
+}
+.article:has(.cover:hover) .title {
+  opacity: 1;
+}
+.title:hover {
+  opacity: 1;
+}
+.article:has(.title:hover) .cover img {
+  width: 103%;
 }
 @media (max-width: 767px) {
   .article {
