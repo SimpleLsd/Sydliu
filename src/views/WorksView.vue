@@ -41,7 +41,7 @@
                 <div class="title font_title">{{ work.title }}</div>
                 <div class="num font_subtitle">{{ work.num }}</div>
               </div>
-              <img src="@/assets/link.svg" alt="" class="link_icon" />
+              <img src="@/assets/right_arrow.svg" alt="" class="link_icon" />
             </div>
             <img :src="work.img" alt="" class="secondary_img" />
           </a>
@@ -71,7 +71,7 @@
         <!-- 父元素布局 -->
         <div class="sections_grid">
           <!-- 左侧 -->
-          <a href="" class="auto_number sections_colored link">
+          <router-link to="/article/8" class="auto_number sections_colored link">
             <div class="title_group">
               <div class="logos">
                 <img src="@/assets/figma_logo_square.svg" alt="" />
@@ -86,9 +86,9 @@
               alt=""
               class="auto_number_img"
             />
-          </a>
+          </router-link>
           <!-- 右侧 -->
-          <a href="" class="github sections_colored link">
+          <router-link to="/article/9" class="github sections_colored link">
             <div class="title_group">
               <img src="@/assets/github_logo.svg" alt="" class="github_logo" />
               <div class="title">SimpleLsd</div>
@@ -169,7 +169,7 @@
                 <div class="tag">Public</div>
               </div>
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
 
