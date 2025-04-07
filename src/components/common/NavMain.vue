@@ -144,7 +144,7 @@ const toggleTheme = themeStore.toggleTheme
   line-height: 48px;
   text-align: center;
   border-radius: 8px;
-  opacity: 0.5;
+  /* opacity: 0.5; */
   cursor: no-drop;
 }
 .theme-toggle {
@@ -173,7 +173,7 @@ const toggleTheme = themeStore.toggleTheme
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: var(--color-main);
   transition: 0.4s;
   border-radius: 50px;
 }
@@ -191,7 +191,7 @@ const toggleTheme = themeStore.toggleTheme
 }
 
 input:checked + .slider {
-  background-color: #4caf50;
+  background-color: var(--color-main);
 }
 
 input:checked + .slider:before {

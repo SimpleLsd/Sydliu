@@ -24,8 +24,8 @@
 :root {
   /* light-color */
   /* nav-color */
-  --color-nav-bg: var(--gray--1);
-  --color-nav-border: var(--gray--3);
+  --color-nav-bg: var(--gray--2);
+  --color-nav-border: var(--gray--4);
   /* common-color */
   --color-main: var(--gray--9);
   --color-border: var(--gray--5);

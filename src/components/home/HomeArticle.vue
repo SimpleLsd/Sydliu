@@ -75,7 +75,7 @@ onMounted(getTagNames)
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   cursor: pointer;
   display: flex;
   align-items: center;
