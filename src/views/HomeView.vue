@@ -78,7 +78,7 @@ onMounted(async () => {
     ])
 
     topArticles.value = Array.isArray(json_topArticles) ? json_topArticles.slice(0, 2) : []
-    homeArticles.value = Array.isArray(json_allArticles) ? json_allArticles.slice(0, 4) : []
+    homeArticles.value = Array.isArray(json_allArticles) ? json_allArticles.slice(0, 12) : []
   } catch (error) {
     errorMessage.value = 'Failed to load articles. Please try again later.'
     console.error('Error fetching articles:', error)
