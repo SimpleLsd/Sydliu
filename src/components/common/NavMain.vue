@@ -40,7 +40,7 @@
         <div class="title">SYDLIU.ME</div>
       </div>
       <div class="divider"></div>
-      <div class="primary_text">JUL 03 / 最后更新 JUL 03</div>
+      <div class="primary_text">最后更新 APR 07</div>
       <div class="theme-toggle">
         <label class="switch">
           <input type="checkbox" v-model="isDarkMode" @change="toggleTheme" />
@@ -77,6 +77,7 @@ const toggleTheme = themeStore.toggleTheme
 
 <style scoped>
 .content {
+  border-radius: 24px;
   position: sticky;
   top: 24px;
   z-index: 1;

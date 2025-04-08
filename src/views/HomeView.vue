@@ -4,7 +4,7 @@
     <div class="left_nav"></div>
     <div class="content">
       <UpdateInfo />
-      <div class="divider"></div>
+      <!-- <div class="divider"></div> -->
       <div class="section">
         <div class="section_title">置顶</div>
         <div class="items">
@@ -19,7 +19,7 @@
           />
         </div>
       </div>
-      <div class="divider"></div>
+      <!-- <div class="divider"></div> -->
       <div class="section">
         <div class="section_title">文章</div>
         <div class="items">
@@ -34,7 +34,7 @@
           />
         </div>
       </div>
-      <div class="divider"></div>
+      <!-- <div class="divider"></div> -->
       <YouMayAsk />
       <GeneralFooter />
     </div>
@@ -102,13 +102,14 @@ onMounted(async () => {
   gap: 14px;
 }
 .section_title {
-  font-size: 24px;
+  font-size: 36px;
+  font-weight: 600;
   color: var(--color-main);
 }
 .content {
   display: flex;
   flex-flow: column;
-  gap: 32px;
+  gap: 48px;
 }
 .divider {
   width: 100%;
@@ -118,7 +119,7 @@ onMounted(async () => {
 .items {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
+  gap: 48px;
 }
 
 @media (max-width: 767px) {

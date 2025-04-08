@@ -69,13 +69,13 @@ onMounted(getTagNames)
   width: 100%;
   display: flex;
   flex-flow: column;
-  gap: 16px;
+  gap: 12px;
 }
 .cover {
   width: 100%;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  /* border-radius: 8px; */
+  border-radius: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -106,7 +106,7 @@ onMounted(getTagNames)
   font-size: 12px;
 }
 .title {
-  opacity: 0.9;
+  opacity: 0.6;
   font-size: 24px;
   font-weight: 500;
   cursor: pointer;
