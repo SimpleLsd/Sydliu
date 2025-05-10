@@ -1,44 +1,43 @@
 <template>
-  <div class="main_scroll">
-    <div class="left_nav"></div>
-    <div class="content">
-      <div
-        class="works_section"
-        v-for="(work, index) in worksPreviewData"
-        :key="work.name"
-        :ref="(el) => (sections[index] = el as HTMLElement | null)"
-      >
-        <WorksDetailSection
-          :work="work"
-          :goToNext="() => scrollToSection(index + 1)"
-          :goToPrev="() => scrollToSection(index - 1)"
-          :isFirst="index === 0"
-          :isLast="index === worksPreviewData.length - 1"
-        />
-      </div>
-      <div class="routes_section">
-        <div class="title">快速切换</div>
-        <div class="routes_container">
-          <div
-            v-for="work in worksData.figma_urls_primary"
-            class="route"
-            :key="work.num"
-            @click="navigateToDetail(work.route)"
-            :class="{ current: route.path === `/works/${work.route}` }"
-          >
-            <div class="title">
-              {{ work.title }}
-              <span v-if="route.path === `/works/${work.route}`">(当前)</span>
-            </div>
-            <div class="num">
-              {{ work.num }}
-            </div>
+  <MainLayout>
+    <!-- <SectionTitle title="工作产出详情" description="" /> -->
+
+    <div
+      class="works_section"
+      v-for="(work, index) in worksPreviewData"
+      :key="work.name"
+      :ref="(el) => (sections[index] = el as HTMLElement | null)"
+    >
+      <WorksDetailSection
+        :work="work"
+        :goToNext="() => scrollToSection(index + 1)"
+        :goToPrev="() => scrollToSection(index - 1)"
+        :isFirst="index === 0"
+        :isLast="index === worksPreviewData.length - 1"
+      />
+    </div>
+    <div class="routes_section">
+      <div class="title">快速切换</div>
+      <div class="routes_container">
+        <div
+          v-for="work in worksData.figma_urls_primary"
+          class="route"
+          :key="work.num"
+          @click="navigateToDetail(work.route)"
+          :class="{ current: route.path === `/works/${work.route}` }"
+        >
+          <div class="title">
+            {{ work.title }}
+            <span v-if="route.path === `/works/${work.route}`">(当前)</span>
+          </div>
+          <div class="num">
+            {{ work.num }}
           </div>
         </div>
       </div>
-      <GeneralFooter />
     </div>
-  </div>
+    <NewFooter />
+  </MainLayout>
 </template>
 
 <script lang="ts" setup>
@@ -46,8 +45,10 @@ import { ref, computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 const router = useRouter()
 
+import MainLayout from '@/layout/MainLayout.vue'
+// import SectionTitle from '@/components/common/SectionTitle.vue'
 import WorksDetailSection from '@/components/common/WorksDetailSection.vue'
-import GeneralFooter from '@/components/common/GeneralFooter.vue'
+import NewFooter from '@/components/common/NewFooter.vue'
 
 import data from '@/works_detail.json'
 import worksData from '@/works.json'
@@ -70,30 +71,6 @@ const navigateToDetail = (route: any) => {
 </script>
 
 <style scoped>
-.main_scroll {
-  width: 100%;
-  color: var(--color-main);
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: minmax(10vw, 150px) 1fr;
-  grid-auto-columns: 1fr;
-}
-.content {
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: start;
-  gap: 60px;
-}
-.works_section {
-  width: 100%;
-}
-
-/* 导航栏 */
-.left_nav {
-  width: 100%;
-  height: 100vh;
-}
 .routes_section {
   width: 100%;
   display: flex;

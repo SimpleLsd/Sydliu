@@ -35,10 +35,6 @@
 import { defineProps, computed, defineAsyncComponent } from 'vue'
 import type { Section } from '@/interfaces/article'
 
-// import SectionBookmark from '@/components/article/SectionBookmark.vue'
-// import SectionCode from '@/components/article/SectionCode.vue'
-// import SectionRichText from '@/components/article/SectionRichText.vue'
-
 const SectionBookmark = defineAsyncComponent(
   () => import('@/components/article/SectionBookmark.vue')
 )
@@ -62,6 +58,15 @@ const imageSrc = computed(() => {
 
 <style scoped>
 p {
+  font-family:
+    PingFangSC,
+    Open Sans,
+    Helvetica Neue,
+    Arial,
+    Hiragino Sans GB,
+    Microsoft YaHei,
+    WenQuanYi Micro Hei,
+    sans-serif;
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -74,6 +79,7 @@ p {
   margin: 16px 0;
 }
 .img {
+  border-radius: 8px;
   max-width: 100%; /* 最大宽度限制为容器宽度 */
   width: auto; /* 原宽度小于容器宽度时保持原宽度 */
   height: auto; /* 保持图片比例 */
@@ -86,8 +92,8 @@ a.mention-link img {
   top: 3px;
 }
 h3 {
-  font-size: 24px;
-  font-weight: 800;
+  font-size: 20px;
+  font-weight: 600;
   margin: 0;
   padding: 0;
 }

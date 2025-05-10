@@ -5,13 +5,17 @@
       <div class="copy unselectable" @click="copyCode">复制代码</div>
     </div>
     <pre v-for="(richText, index) in props.section.typeData.rich_text" :key="index">
-  <code :class="`language-${getLanguage}`">{{ richText.text?.content || ''}}</code>
-</pre>
+      <code :class="`language-${getLanguage}`">{{ richText.text?.content || ''}}</code>
+    </pre>
+    <!-- Toast -->
+    <Transition name="fade">
+      <div v-if="showToast" class="toast">复制成功!</div>
+    </Transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, onMounted, computed } from 'vue'
+import { defineProps, onMounted, ref, computed } from 'vue'
 import type { CodeSection } from '@/interfaces/article'
 
 import hljs from 'highlight.js'
@@ -22,9 +26,15 @@ const props = defineProps<{
   section: CodeSection
 }>()
 
+const showToast = ref(false)
+
 const copyCode = () => {
   const code = props.section.typeData.rich_text.map((richText) => richText.text?.content).join('\n')
   navigator.clipboard.writeText(code)
+  showToast.value = true
+  setTimeout(() => {
+    showToast.value = false
+  }, 2000)
 }
 
 const getLanguage = computed(() => {
@@ -65,7 +75,7 @@ onMounted(() => {
   justify-content: space-between;
   align-items: center;
   padding: 8px 16px;
-  background-color: var(--color-code-bg);
+  background-color: #222;
   color: var(--color-text-secondary);
 }
 .copy {
@@ -76,7 +86,32 @@ onMounted(() => {
 }
 pre,
 code {
+  color: #fff;
   padding-top: 0 !important;
-  background-color: var(--color-code-bg);
+  background-color: #222;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(50, 50, 50, 0.85);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* 动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

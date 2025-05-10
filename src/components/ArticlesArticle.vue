@@ -1,16 +1,18 @@
 <template>
-  <div class="article border">
-    <div class="cover" @click="navigateToArticle">
+  <div class="article border" @click="navigateToArticle">
+    <div class="cover">
       <img :src="coverUrl" alt="" />
     </div>
-    <div class="date_tags">
-      <div class="date">{{ formattedDate }}</div>
-      <div class="tags">
-        <div class="tag" v-for="(tag, index) in tagNames.slice(0, 2)" :key="index">{{ tag }}</div>
+    <div class="info-group">
+      <div class="date_tags">
+        <div class="date">{{ formattedDate }}</div>
+        <div class="tags">
+          <div class="tag" v-for="(tag, index) in tagNames.slice(0, 2)" :key="index">{{ tag }}</div>
+        </div>
       </div>
-    </div>
-    <div class="title" @click="navigateToArticle">
-      {{ title }}
+      <div class="title">
+        {{ title }}
+      </div>
     </div>
   </div>
 </template>
@@ -68,11 +70,11 @@ onMounted(getTagNames)
   border: 1px solid #f0f0f0;
 }
 .article {
-  width: 100%;
-  padding: 16px 16px 12px 16px;
+  padding: 12px;
   display: flex;
-  flex-flow: column;
-  gap: 10px;
+  flex-flow: row;
+  align-items: center;
+  gap: 12px;
   border-radius: 16px;
   cursor: pointer;
   transition: 200ms ease;
@@ -82,7 +84,8 @@ onMounted(getTagNames)
   border: 1px solid #aaa;
 }
 .cover {
-  width: 100%;
+  width: 80px;
+  height: 80px;
   aspect-ratio: 1 / 1;
   overflow: hidden;
   border-radius: 8px;
@@ -92,14 +95,20 @@ onMounted(getTagNames)
 }
 .cover img {
   width: 100%;
+  height: 100%;
   transition: all 0.3s ease-out;
+}
+.info-group {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
 }
 .date_tags {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #666;
-  margin-top: 6px;
 }
 .date {
   margin-top: 1px;
@@ -116,7 +125,7 @@ onMounted(getTagNames)
   align-items: center;
   justify-content: center;
   padding: 0 8px;
-  border: 1px solid var(--color-border);
+  border: 1px solid #f0f0f0;
   cursor: pointer;
   border-radius: 4px;
   font-size: 400;
@@ -126,102 +135,10 @@ onMounted(getTagNames)
 }
 .title {
   color: #000;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.05s;
   text-align: justify;
 }
-
-/* old */
-/* .article {
-  color: var(--color-text-primary);
-  width: 100%;
-  display: flex;
-  flex-flow: column;
-  gap: 12px;
-}
-.cover {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  border-radius: 20px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.cover img {
-  width: 100%;
-  transition: all 0.3s ease-out;
-}
-
-.date_tags {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.tags {
-  display: flex;
-  gap: 12px;
-}
-.tag {
-  font-size: 12px;
-  padding: 4px 8px;
-  border: 1px solid var(--color-border);
-  cursor: pointer;
-  border-radius: 4px;
-}
-.date {
-  font-size: 12px;
-}
-.title {
-  opacity: 0.6;
-  font-size: 24px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.05s;
-}
-.cover:hover img {
-  width: 103%;
-}
-.article:has(.cover:hover) .title {
-  opacity: 1;
-}
-.title:hover {
-  opacity: 1;
-}
-.article:has(.title:hover) .cover img {
-  width: 103%;
-}
-@media (max-width: 767px) {
-  .article {
-    gap: 8px;
-  }
-  .date {
-    font-size: 12px !important;
-    opacity: 0.8;
-  }
-  .tags {
-    display: flex;
-    gap: 4px;
-  }
-  .tag:nth-child(n + 2) {
-    display: none;
-  }
-  .tag {
-    font-size: 12px;
-    padding: 3px 6px;
-    border: 1px solid var(--color-border);
-    cursor: pointer;
-    border-radius: 4px;
-  }
-  .date {
-    font-size: 12px;
-  }
-  .title {
-    font-size: 14px;
-    font-weight: 500;
-  }
-} */
 </style>

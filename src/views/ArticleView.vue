@@ -1,34 +1,33 @@
 <template>
-  <div class="main_scroll">
-    <div class="left_nav"></div>
-    <div class="content">
-      <div class="head">
-        <div class="left">
-          <div class="date">{{ formattedDate }}</div>
-          <div class="title">{{ article?.title }}</div>
-          <div class="tags">
-            <div class="tag" v-for="(tag, index) in tagNames.slice(0, 3)" :key="index">
-              {{ tag }}
-            </div>
+  <MainLayout class="main">
+    <div class="head">
+      <div class="left">
+        <div class="date">{{ formattedDate }}</div>
+        <div class="title">{{ article?.title }}</div>
+        <div class="tags">
+          <div class="tag" v-for="(tag, index) in tagNames.slice(0, 3)" :key="index">
+            {{ tag }}
           </div>
         </div>
-        <div class="cover"><img :src="article?.coverUrl" /></div>
       </div>
-      <img src="@/assets/logo.svg" class="top_logo" />
-      <div v-for="(group, index) in groupedSections" :key="index" class="section">
-        <ArticleSection :section="group" />
-      </div>
-      <GeneralFooter />
+      <div class="cover"><img :src="article?.coverUrl" /></div>
     </div>
-  </div>
+    <div class="logo"><img src="@/assets/svg/nav_logo.svg" class="top_logo" /></div>
+
+    <div v-for="(group, index) in groupedSections" :key="index" class="section">
+      <ArticleSection :section="group" />
+    </div>
+    <NewFooter />
+  </MainLayout>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed, onMounted, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import type { Article, Section, ListSection } from '@/interfaces/article'
-import GeneralFooter from '@/components/common/GeneralFooter.vue'
-// import ArticleSection from '@/components/article/ArticleSection.vue'
+
+import MainLayout from '@/layout/MainLayout.vue'
+import NewFooter from '@/components/common/NewFooter.vue'
 
 const ArticleSection = defineAsyncComponent(() => import('@/components/article/ArticleSection.vue'))
 
@@ -124,36 +123,8 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.main_scroll {
-  width: 100%;
-  color: var(--color-text-primary);
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: minmax(10vw, 150px) 1fr;
-  grid-auto-columns: 1fr;
-}
-.left_nav {
-  width: 100%;
-  height: 100vh;
-}
-@media (max-width: 767px) {
-  .main_scroll {
-    grid-template-columns: 0 1fr;
-  }
-  .left_nav {
-    width: 0;
-  }
-  .content {
-    padding-right: 0px !important;
-  }
-}
-.content {
-  min-width: 0;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
+.main > * {
   gap: 32px;
-  padding: 0 32px 0 0;
 }
 .head {
   width: 100%;
@@ -193,29 +164,16 @@ onMounted(async () => {
   cursor: pointer;
   border-radius: 4px;
 }
-.top_logo {
-  width: 40px;
-}
-.section {
+.logo {
   width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
 }
 
-@media (max-width: 767px) {
-  .head {
-    flex-flow: column;
-    flex-direction: column-reverse;
-    gap: 16px;
-  }
-  .cover {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  .cover img {
-    width: 75vw;
-  }
-  .title {
-    font-size: 24px;
-  }
+.section {
+  width: 100%;
+  /* padding: 0 50px; */
+  padding: 0;
 }
 </style>

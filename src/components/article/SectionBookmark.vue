@@ -5,7 +5,9 @@
     <div v-if="bookmarkData?.description">{{ bookmarkData?.description }}</div>
     <div class="link_group">
       <img v-if="bookmarkData?.favicon" :src="bookmarkData?.favicon" alt="favicon" />
-      <IconLink v-else class="favicon"></IconLink>
+      <div v-else class="favicon">
+        <img src="@/assets/svg/bookmark_link.svg" alt="" />
+      </div>
       <div>{{ props.url }}</div>
     </div>
   </a>
@@ -24,7 +26,7 @@
 <script lang="ts" setup>
 import axios from 'axios'
 import { onMounted, ref } from 'vue'
-import IconLink from '@/components/icons/IconLink.vue'
+// import IconLink from '@/components/icons/IconLink.vue'
 
 const props = defineProps<{
   url: string
@@ -128,6 +130,7 @@ onMounted(() => {
 
 <style scoped>
 .url_block {
+  font-weight: 400;
   display: flex;
   flex-flow: column;
   gap: 8px;
@@ -137,7 +140,7 @@ onMounted(() => {
   color: var(--color-text-primary);
   text-decoration: none;
   border-radius: 4px;
-  border: 1px solid var(--color-border);
+  border: 1px solid #f0f0f0;
   cursor: pointer;
 }
 .url_block:hover {
@@ -158,6 +161,9 @@ onMounted(() => {
   height: 16px;
 }
 .favicon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20px;
   height: 20px;
 }

@@ -1,13 +1,20 @@
 <template>
-  <main class="main_scroll">
-    <!-- <TheWelcome /> -->
-    <div class="left_nav"></div>
-    <div class="content">
-      <UpdateInfo />
-      <!-- <div class="divider"></div> -->
+  <div class="main_scroll">
+    <div class="contents">
+      <HomeHead2505 />
+      <div class="texts">
+        <div class="title">你好，这里是Syd的网站</div>
+        <div class="description">
+          我研究设计和其技术实现，立志成为全栈设计师，目前在广州生活，正在求职中。
+        </div>
+        <div class="works-link border">
+          作品集
+          <img src="@/assets/svg/arrow_right_16.svg" alt="" />
+        </div>
+      </div>
       <div class="section">
-        <div class="section_title">置顶</div>
-        <div class="items">
+        <div class="title">置顶</div>
+        <div class="items_grid article_top">
           <HomeArticle
             v-for="(article, index) in topArticles"
             :key="'top-' + index"
@@ -19,10 +26,15 @@
           />
         </div>
       </div>
-      <!-- <div class="divider"></div> -->
       <div class="section">
-        <div class="section_title">文章</div>
-        <div class="items">
+        <div class="title section-title">
+          文章
+          <div class="more border">
+            View all
+            <img src="@/assets/svg/arrow_right_16.svg" alt="" />
+          </div>
+        </div>
+        <div class="items_grid">
           <HomeArticle
             v-for="(article, index) in homeArticles"
             :key="'top-' + index"
@@ -34,21 +46,43 @@
           />
         </div>
       </div>
-      <!-- <div class="divider"></div> -->
-      <YouMayAsk />
-      <GeneralFooter />
+      <div class="section">
+        <div class="title section-title">
+          画廊
+          <div class="more border">
+            View all
+            <img src="@/assets/svg/arrow_right_16.svg" alt="" />
+          </div>
+        </div>
+        <div class="items_grid">
+          <div
+            class="home-img"
+            v-for="item in imgs"
+            :key="item.title"
+            @click="navigateToDrawing(item.num)"
+          >
+            <HomeDrawing :title="item.title" :coverUrl="item.url" :date="item.date" />
+          </div>
+        </div>
+      </div>
+      <NewFooter />
     </div>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import type { Article } from '@/interfaces/article'
+import { useRouter } from 'vue-router'
 
-import UpdateInfo from '../components/home/UpdateInfo.vue'
+const router = useRouter()
+
+import HomeHead2505 from '@/components/home/HomeHead2505.vue'
 import HomeArticle from '../components/home/HomeArticle.vue'
-import YouMayAsk from '../components/home/YouMayAsk.vue'
-import GeneralFooter from '../components/common/GeneralFooter.vue'
+import HomeDrawing from '../components/home/HomeDrawing.vue'
+import NewFooter from '@/components/common/NewFooter.vue'
+
+import imgs from '@/data/imgs_temp.json'
 
 const topArticles = ref<Article[]>([])
 const homeArticles = ref<Article[]>([])
@@ -59,7 +93,13 @@ const errorMessage = ref('')
 const API_AllArticles = 'https://server.sydliu.me:8088/api/articles'
 const API_TopArticles = 'https://server.sydliu.me:8088/api/articles_top'
 
+const navigateToDrawing = (num: number) => {
+  router.push(`/drawing/${num}`)
+}
+
 onMounted(async () => {
+  // 获取置顶文章和全部文章
+  // 保存在 topArticles 和 homeArticles 中
   try {
     const [data_allArticles, data_topArticles] = await Promise.all([
       fetch(API_AllArticles),
@@ -77,8 +117,8 @@ onMounted(async () => {
       data_topArticles.json()
     ])
 
-    topArticles.value = Array.isArray(json_topArticles) ? json_topArticles.slice(0, 2) : []
-    homeArticles.value = Array.isArray(json_allArticles) ? json_allArticles.slice(0, 12) : []
+    topArticles.value = Array.isArray(json_topArticles) ? json_topArticles.slice(0, 3) : []
+    homeArticles.value = Array.isArray(json_allArticles) ? json_allArticles.slice(0, 6) : []
   } catch (error) {
     errorMessage.value = 'Failed to load articles. Please try again later.'
     console.error('Error fetching articles:', error)
@@ -90,49 +130,110 @@ onMounted(async () => {
 
 <style scoped>
 .main_scroll {
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: minmax(10vw, 150px) 1fr;
-  grid-auto-columns: 1fr;
   width: 100%;
-}
-.section {
   display: flex;
-  flex-flow: column;
-  gap: 14px;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
 }
-.section_title {
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--color-main);
-}
-.content {
+.contents {
+  width: 800px;
   display: flex;
-  flex-flow: column;
-  gap: 48px;
+  flex-direction: column;
+  background-color: #fff;
+  gap: 32px;
 }
-.divider {
+.border {
+  border: 1px solid #f0f0f0;
+}
+.drawing {
   width: 100%;
-  height: 1px;
-  background-color: #262626;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
 }
-.items {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 48px;
+.drawing img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #000;
+}
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  color: #666;
+}
+.works-link {
+  width: 96px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+.works-link:hover {
+  /* 未定颜色 */
+  background-color: #f0f0f0;
 }
 
-@media (max-width: 767px) {
-  .main_scroll {
-    display: block;
-    grid-template-columns: 1fr;
-    grid-template-columns: minmax(10vw, 0) 1fr;
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.items_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+  width: 100%;
+}
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.more {
+  width: 92px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  cursor: pointer;
+  transition: 200ms ease;
+}
+.more:hover {
+  /* 未定颜色 */
+  /* background-color: #f0f0f0; */
+  border: 1px solid #000;
+}
+
+@media (max-width: 896px) {
+  .contents {
     width: 100%;
+    padding: 0 48px;
   }
-  .content {
-    display: flex;
-    flex-flow: column;
-    gap: 24px;
+  .article_top :nth-child(3) {
+    display: none;
   }
 }
 </style>

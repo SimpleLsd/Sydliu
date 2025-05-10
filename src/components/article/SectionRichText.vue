@@ -65,8 +65,17 @@ const generateClasses = (annotations: RichText['annotations']): string => {
 
 <style scoped>
 span {
+  font-family:
+    PingFangSC,
+    Open Sans,
+    Helvetica Neue,
+    Arial,
+    Hiragino Sans GB,
+    Microsoft YaHei,
+    WenQuanYi Micro Hei,
+    sans-serif;
   font-size: 16px;
-  font-weight: 300;
+  font-weight: 400;
 }
 span.default {
   margin-right: 4px;
@@ -85,7 +94,7 @@ span.underline {
 }
 span.code {
   font-family: 'Courier New', Courier, monospace;
-  background-color: var(--color-border);
+  background-color: #eaeaea;
   padding: 3px 6px 1px 6px;
   border-radius: 4px;
   vertical-align: middle;
@@ -96,8 +105,16 @@ span.text-default {
 img.mention-icon {
   width: 24px;
   height: 24px;
-  margin-right: 4px;
-  position: relative;
-  top: 6px;
+  margin-right: 8px;
+  /* position: relative; */
+  /* top: 6px; */
+}
+.mention-link {
+  border-radius: 8px;
+  padding-left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  text-decoration: underline;
 }
 </style>

@@ -148,7 +148,7 @@ onMounted(() => {
   display: flex;
   flex-flow: column;
   align-items: start;
-  gap: 24px;
+  gap: 8px;
   /* border: 1px solid #ffffff30; */
 }
 .padding_top {
@@ -168,12 +168,12 @@ onMounted(() => {
 }
 
 .section_title {
-  font-size: 32px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--color-main);
 }
 .img_title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
   color: var(--color-main);
   display: flex;
@@ -259,10 +259,10 @@ onMounted(() => {
   cursor: default;
 }
 ol {
-  padding-left: 16px;
+  padding-left: 14px;
 }
 li {
-  margin-top: 8px;
+  margin-top: 4px;
   text-align: justify;
 }
 

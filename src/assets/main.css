@@ -2,16 +2,12 @@
 @import './color.css';
 
 #app {
-  width: 100vw;
-  max-width: 1600px;
-  margin: 0 auto;
-  font-weight: normal;
+  width: 100%;
+  /* margin: 0 auto; */
 }
 
 a {
-  /* text-decoration: none; */
   text-decoration: underline;
-  /* color: hsla(160, 100%, 37%, 1); */
   color: inherit;
   transition: 0.4s;
   padding: 3px;
@@ -29,6 +25,10 @@ a {
   box-sizing: border-box;
   margin: 0;
   font-weight: normal;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  /* transition: 200ms ease; */
 }
 
 *::selection {
@@ -40,23 +40,16 @@ a {
   user-select: none;
 }
 
-html {
+/* html {
   width: 100%;
-}
+} */
 
 body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  background-color: var(--color-background);
+  /* min-height: 100vh; */
   width: 100%;
-
-  transition:
-    color 0.5s,
-    background-color 0.5s;
   line-height: 1.6;
   font-family:
-    'SourceHanSansCN',
+    /* 'SourceHanSansCN', */
     Inter,
     -apple-system,
     BlinkMacSystemFont,
@@ -69,20 +62,91 @@ body {
     'Droid Sans',
     'Helvetica Neue',
     sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
 }
 
 html,
 body {
-  /* overflow: auto; */
-  scrollbar-width: none;
+  /* overflow: scroll; */
   scroll-behavior: smooth;
 }
-html::-webkit-scrollbar,
-body::-webkit-scrollbar {
-  display: none;
-  scroll-behavior: smooth;
+
+img {
+  display: block;
+}
+
+.border {
+  border: 1px solid #f0f0f0;
+}
+
+.r4 {
+  border-radius: 4px;
+}
+.r2 {
+  border-radius: 2px;
+}
+.r0 {
+  border-radius: 0;
+}
+.r8 {
+  border-radius: 8px;
+}
+.r16 {
+  border-radius: 16px;
+}
+.r20 {
+  border-radius: 20px;
+}
+.r24 {
+  border-radius: 24px;
+}
+.r32 {
+  border-radius: 32px;
+}
+.r40 {
+  border-radius: 40px;
+}
+.r48 {
+  border-radius: 48px;
+}
+.r56 {
+  border-radius: 56px;
+}
+.r64 {
+  border-radius: 64px;
+}
+.p20 {
+  padding: 20px;
+}
+
+.g4 {
+  gap: 4px;
+}
+.g8 {
+  gap: 8px;
+}
+.g10 {
+  gap: 10px;
+}
+.g12 {
+  gap: 12px;
+}
+.g16 {
+  gap: 16px;
+}
+.g20 {
+  gap: 20px;
+}
+
+.anime2 {
+  transition: all 0.2s ease-out;
+}
+
+.flex_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex_col {
+  display: flex;
+  flex-direction: column;
 }
